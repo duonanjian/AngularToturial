@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import {LoginComponent} from './login/login.component'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { Home } from './home/home';
+import {WelcomeRoutingModule} from './pages/welcome-routing.module'
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { zh_CN } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
@@ -18,8 +18,8 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 registerLocaleData(zh);
 
 @NgModule({
-  declarations: [AppComponent, Home],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, BrowserAnimationsModule, IconsProviderModule, NzLayoutModule, NzMenuModule],
+  declarations: [AppComponent,LoginComponent],
+  imports: [BrowserModule, AppRoutingModule,WelcomeRoutingModule, FormsModule, HttpClientModule, BrowserAnimationsModule, IconsProviderModule, NzLayoutModule, NzMenuModule],
   providers: [{ provide: NZ_I18N, useValue: zh_CN }],
   bootstrap: [AppComponent],
 })
