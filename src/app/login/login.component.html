@@ -1,6 +1,22 @@
 <div class="loginbackground">
   <div class="loginblock">
-    <div style="width:200px;height:300px" class="myclass" [ngClass]="getmyclass()" ></div>
-    <button [ngClass]="{myclass:true,myclass2:false}" nzType="primary">进入</button>
+    <div
+      style="width: 100%; height: 100px"
+      class="myclass"
+      [ngClass]="getmyclass()"
+    >
+      {{ hero.name }}
+    </div>
+    <input id="name" [(ngModel)]="hero.id" placeholder="id" />
+    <input id="name" [(ngModel)]="hero.name" placeholder="name" />
+    <a routerLink="/welcome">
+      <button
+        class="button"
+        [ngClass]="{ myclass: true, myclass2: false }"
+        nzType="primary"
+      >
+        进入
+      </button></a
+    >
   </div>
 </div>
