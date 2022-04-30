@@ -5,10 +5,28 @@
       class="myclass"
       [ngClass]="getmyclass()"
     >
-      {{ hero.name }}
+      {{ userinfo.username }}
     </div>
-    <input id="name" [(ngModel)]="hero.id" placeholder="id" />
-    <input id="name" [(ngModel)]="hero.name" placeholder="name" />
+    <input
+      id="name"
+      [(ngModel)]="userinfo.username"
+      placeholder="id"
+      #username
+    />
+    <input
+      id="name"
+      [(ngModel)]="userinfo.password"
+      placeholder="name"
+      #password
+    />
+    <button
+      (click)="onSave(username.value, password.value)"
+      class="button"
+      [ngClass]="{ myclass: true, myclass2: false }"
+      nzType="primary"
+    >
+      进入表单
+    </button>
     <a routerLink="/welcome">
       <button
         class="button"

@@ -17,18 +17,19 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 registerLocaleData(zh);
 import { WelcomeModule } from './pages/welcome.module';
 @NgModule({
-  declarations: [AppComponent, LoginComponent],
+  declarations: [AppComponent, LoginComponent,],
   imports: [
-    WelcomeModule,
     BrowserModule,
     AppRoutingModule,
-    WelcomeRoutingModule,
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     IconsProviderModule,
     NzLayoutModule,
     NzMenuModule,
+    // welcome组件相关
+    WelcomeModule,
+    WelcomeRoutingModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: zh_CN }],
   bootstrap: [AppComponent],

@@ -2,10 +2,10 @@ import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-component-overview',
-  templateUrl: './home.html',
-  styleUrls: ['./home.less'],
+  templateUrl: './monitor.component.html',
+  styleUrls: ['./monitor.component.less'],
 })
-export class Home implements OnInit {
+export class Monitor implements OnInit {
   title: any = 'overviewtitle';
   styleset: any = 'color:green';
   styleset2: any = 'font-size:40px';

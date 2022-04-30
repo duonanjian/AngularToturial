@@ -1,17 +1,20 @@
 import { Component } from '@angular/core';
-import { Hero } from '../datamodule/hero';
+import { UserInfo } from '../datamodule/UserInfo';
 @Component({
   selector: 'login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.less'],
 })
 export class LoginComponent {
-  hero: Hero = {
-    id: 1,
-    name: 'eee',
+  userinfo: UserInfo = {
+    username: 'admin',
+    password: 123456,
   };
-  
+
   getmyclass(): string {
     return 'myclass2';
+  }
+  onSave(usename: any, password: any): void {
+    console.log(usename, password, this.userinfo);
   }
 }
