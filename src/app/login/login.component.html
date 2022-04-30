@@ -1,40 +1,54 @@
 <div class="loginbackground">
   <div class="loginblock">
-    <div
-      style="width: 100%; height: 100px"
-      class="myclass"
-      [ngClass]="getmyclass()"
+    <form
+      nz-form
+      [formGroup]="validateForm"
+      class="login-form"
+      (ngSubmit)="submitForm()"
     >
-      {{ userinfo.username }}
-    </div>
-    <input
-      id="name"
-      [(ngModel)]="userinfo.username"
-      placeholder="id"
-      #username
-    />
-    <input
-      id="name"
-      [(ngModel)]="userinfo.password"
-      placeholder="name"
-      #password
-    />
-    <button
-      (click)="onSave(username.value, password.value)"
-      class="button"
-      [ngClass]="{ myclass: true, myclass2: false }"
-      nzType="primary"
-    >
-      进入表单
-    </button>
-    <a routerLink="/welcome">
-      <button
-        class="button"
-        [ngClass]="{ myclass: true, myclass2: false }"
-        nzType="primary"
-      >
-        进入
-      </button></a
-    >
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Please input your username!">
+          <nz-input-group nzPrefixIcon="user">
+            <input
+              type="text"
+              nz-input
+              formControlName="userName"
+              placeholder="用户名"
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Please input your Password!">
+          <nz-input-group nzPrefixIcon="lock">
+            <input
+              type="password"
+              nz-input
+              formControlName="password"
+              placeholder="密码"
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <div nz-row class="login-form-margin">
+        <div nz-col [nzSpan]="12">
+          <label nz-checkbox formControlName="remember">
+            <span>记住我</span>
+          </label>
+        </div>
+        <div nz-col [nzSpan]="12">
+          <a class="login-form-forgot">忘记密码</a>
+        </div>
+      </div>
+      <a routerLink="/welcome">
+        <button
+          nz-button
+          class="login-form-button login-form-margin"
+          [nzType]="'primary'"
+        >
+          登录
+        </button>
+      </a>
+    </form>
   </div>
 </div>

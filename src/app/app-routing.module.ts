@@ -8,8 +8,9 @@ const routes: Routes = [
 
   {
     path: 'welcome',
-    loadChildren: () =>
-      import('./pages/welcome.module').then((m) => m.WelcomeModule),
+    component: WelcomeComponent 
+    // loadChildren: () =>
+    //   import('./pages/welcome.module').then((m) => m.WelcomeModule),
   },
 ];
 
