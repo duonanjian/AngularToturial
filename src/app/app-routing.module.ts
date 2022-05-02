@@ -8,9 +8,13 @@ const routes: Routes = [
 
   {
     path: 'welcome',
-    component: WelcomeComponent 
-    // loadChildren: () =>
-    //   import('./pages/welcome.module').then((m) => m.WelcomeModule),
+    /* 使用懒加载该组件模块
+    {  path: '',
+       component: WelcomeComponent,
+     }
+    */
+    loadChildren: () =>
+      import('./pages/welcome.module').then((m) => m.WelcomeModule),
   },
 ];
 

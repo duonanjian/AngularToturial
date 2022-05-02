@@ -3,14 +3,15 @@ import { Routes, RouterModule } from '@angular/router';
 import { WelcomeComponent } from './welcome.component';
 import { Monitor } from './monitor/monitor.component';
 import { WorkplaceComponent } from './workplace/workplace.component';
-
+import { FormComponent } from './form/form.component';
 const routes: Routes = [
   {
-    path: 'welcome',
+    path: '',
     component: WelcomeComponent,
     children: [
       { path: 'monitor', component: Monitor },
       { path: 'workplace', component: WorkplaceComponent },
+      { path: 'form', component: FormComponent },
     ],
   },
 ];

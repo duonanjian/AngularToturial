@@ -1,0 +1,12 @@
+<nz-modal
+  [(nzVisible)]="modalisVisible"
+  [nzTitle]="descripe"
+  (nzOnCancel)="handleCancel(false)"
+  (nzOnOk)="handleOk(false)"
+>
+  <ng-container *nzModalContent>
+    <p>Content one</p>
+    <p>Content two</p>
+    <p>Content three</p>
+  </ng-container>
+</nz-modal>
