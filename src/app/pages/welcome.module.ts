@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-// 只能有一个根module
+// 只能有一个根module,CommonModule 特性模块
 import { CommonModule } from '@angular/common';
 // 路由模块
 import { WelcomeRoutingModule } from './welcome-routing.module';

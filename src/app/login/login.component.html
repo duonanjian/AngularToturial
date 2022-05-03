@@ -2,12 +2,12 @@
   <div class="loginblock">
     <form
       nz-form
-      [formGroup]="validateForm"
       class="login-form"
+      [formGroup]="validateForm"
       (ngSubmit)="submitForm()"
     >
       <nz-form-item>
-        <nz-form-control nzErrorTip="Please input your username!">
+        <nz-form-control nzErrorTip="请输入用户名">
           <nz-input-group nzPrefixIcon="user">
             <input
               type="text"
@@ -19,7 +19,7 @@
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
-        <nz-form-control nzErrorTip="Please input your Password!">
+        <nz-form-control nzErrorTip="请输入密码">
           <nz-input-group nzPrefixIcon="lock">
             <input
               type="password"
@@ -40,15 +40,13 @@
           <a class="login-form-forgot">忘记密码</a>
         </div>
       </div>
-      <a routerLink="/welcome">
-        <button
-          nz-button
-          class="login-form-button login-form-margin"
-          [nzType]="'primary'"
-        >
-          登录
-        </button>
-      </a>
+      <button
+        nz-button
+        class="login-form-button login-form-margin"
+        [nzType]="'primary'"
+      >
+        登录
+      </button>
     </form>
   </div>
 </div>

@@ -13,9 +13,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IconsProviderModule } from './icons-provider.module';
 import { NgZorroAntdModule } from './ng-zorro-antd.module';
-
 registerLocaleData(zh);
 import { WelcomeModule } from './pages/welcome.module';
+import { LoginAuthGuard } from './guards/login-auth.guard';
+import { CookieService } from 'ngx-cookie-service';
 @NgModule({
   declarations: [AppComponent, LoginComponent],
   imports: [
@@ -31,7 +32,7 @@ import { WelcomeModule } from './pages/welcome.module';
     WelcomeModule,
     WelcomeRoutingModule,
   ],
-  providers: [{ provide: NZ_I18N, useValue: zh_CN }],
+  providers: [LoginAuthGuard,CookieService,{ provide: NZ_I18N, useValue: zh_CN }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
