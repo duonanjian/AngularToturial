@@ -12,17 +12,17 @@ import {
   AfterViewChecked,
   OnDestroy,
 } from '@angular/core';
-
+import { ModalService } from './service/modal.service';
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.less'],
 })
+// DoCheck,
 export class ModalComponent
   implements
     OnInit,
     OnChanges,
-    // DoCheck,
     AfterContentInit,
     AfterContentChecked,
     AfterViewInit,
@@ -33,7 +33,9 @@ export class ModalComponent
   @Input() descripe: string = '查看';
   @Output() modalhandleCancel = new EventEmitter<boolean>();
   @Output() modalhandleOk = new EventEmitter<boolean>();
-  constructor() {}
+  constructor(public modalservice: ModalService) {
+    console.log(this.modalservice);
+  }
   handleCancel(status: boolean) {
     this.modalhandleCancel.emit(status);
   }
@@ -44,6 +46,8 @@ export class ModalComponent
     console.log('弹框组件 ngOnChanges');
   }
   ngOnInit() {
+    console.log(this.modalservice);
+
     console.log('弹框组件 ngOnInit');
   }
   // ngDoCheck() {
@@ -54,18 +58,14 @@ export class ModalComponent
   }
   ngAfterContentChecked() {
     console.log('弹框组件 ngAfterContentChecked');
-
   }
   ngAfterViewInit() {
     console.log('弹框组件 ngAfterViewInit');
-
   }
   ngAfterViewChecked() {
     console.log('弹框组件 ngAfterViewChecked');
-
   }
   ngOnDestroy() {
     console.log('弹框组件 ngOnDestroy');
-
   }
 }

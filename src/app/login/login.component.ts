@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserInfo } from '../datamodule/UserInfo';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { CookieService } from 'ngx-cookie-service';
+import { ApiService } from 'src/service/api.service';
 @Component({
   selector: 'login',
   templateUrl: './login.component.html',
@@ -15,15 +16,18 @@ export class LoginComponent implements OnInit {
   //   password: 123456,
   // };
   validateForm!: FormGroup;
-
+  private loginURL =
+    'https://mock.mengxuegu.com/mock/6188fda74c5d9932f7e75822/duonanjian/login';
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private message: NzMessageService,
-    private cookie: CookieService
+    private cookie: CookieService,
+    private loginService: ApiService
   ) {}
 
   ngOnInit(): void {
+    this.loginService.get(this.loginURL).subscribe((res) => console.log(res));
     // 初始化设置初始值，初始要求
     this.validateForm = this.fb.group({
       userName: [this.cookie.get('userName'), [Validators.required]],
@@ -47,6 +51,10 @@ export class LoginComponent implements OnInit {
         this.cookie.delete('userName');
         this.cookie.delete('password');
       }
+      this.loginService
+        .get(this.loginURL, this.validateForm.value)
+        .subscribe((res) => console.log(res));
+
       this.cookie.set('token', 'token1234567890');
       this.createMessage('success', '登录成功！');
       this.router.navigate(['/welcome']);
