@@ -4,7 +4,7 @@
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NgZorroAntdModule } from '../ng-zorro-antd.module';
+import { NgZorroAntdModule } from 'src/ant-design-source/ng-zorro-antd.module';
 import { ButtonComponent } from './button/button.component';
 import { ModalComponent } from './modal/modal.component';
 @NgModule({

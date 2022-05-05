@@ -11,10 +11,6 @@ import { StoreService } from 'src/service/store.service';
   styleUrls: ['./login.component.less'],
 })
 export class LoginComponent implements OnInit {
-  // userinfo: UserInfo = {
-  //   username: 'admin',
-  //   password: 123456,
-  // };
   validateForm!: FormGroup;
   private loginURL =
     'https://mock.mengxuegu.com/mock/6188fda74c5d9932f7e75822/duonanjian/login';
@@ -26,7 +22,7 @@ export class LoginComponent implements OnInit {
     private loginService: ApiService,
     private storeService: StoreService
   ) {}
-
+  // 初始化赋值
   ngOnInit(): void {
     this.loginService.get(this.loginURL).subscribe((res) => console.log(res));
     // 初始化设置初始值，初始要求
@@ -38,34 +34,26 @@ export class LoginComponent implements OnInit {
   }
   // 提交表单
   submitForm(): void {
+    let whiteList = [true, 'true'];
     if (this.validateForm.valid) {
-      console.log(this.validateForm.value.remember);
-      if (
-        this.validateForm.value.remember === true ||
-        this.validateForm.value.remember === 'true'
-      ) {
-        for (let key in this.validateForm.value) {
-          this.cookie.set(key, this.validateForm.value[key]);
-        }
-      } else {
-        this.cookie.set('remember', 'false');
-        this.cookie.delete('userName');
-        this.cookie.delete('password');
-      }
       this.loginService
         .get(this.loginURL, this.validateForm.value)
-        .subscribe((res) => console.log(res));
-      this.storeService.setToken('token1234567890');
-      console.log(this.storeService.getToken());
-      this.cookie.set('token', 'token1234567890');
-      this.createMessage('success', '登录成功！');
-      this.router.navigate(['/welcome']);
-
-      // if (this.validateForm.value.password === 123456) {
-      //   this.router.navigate(['/welcome']);
-      // } else {
-      //   this.createMessage('success', '密码不正确');
-      // }
+        .subscribe((res) => {
+          if (whiteList.includes(this.validateForm.value.remember)) {
+            for (let key in this.validateForm.value) {
+              this.cookie.set(key, this.validateForm.value[key]);
+            }
+          } else {
+            this.cookie.set('remember', 'false');
+            this.cookie.delete('userName');
+            this.cookie.delete('password');
+          }
+          console.log(res);
+          this.storeService.setToken(res.token);
+          this.cookie.set('token', res.token);
+          this.createMessage('success', '登录成功！');
+          this.router.navigate(['/welcome']);
+        });
     } else {
       this.openDirtyControl(this.validateForm);
     }

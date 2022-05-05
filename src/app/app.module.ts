@@ -11,8 +11,8 @@ import zh from '@angular/common/locales/zh';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { IconsProviderModule } from './icons-provider.module';
-import { NgZorroAntdModule } from './ng-zorro-antd.module';
+import { IconsProviderModule } from 'src/ant-design-source/icons-provider.module';
+import { NgZorroAntdModule } from 'src/ant-design-source/ng-zorro-antd.module';
 registerLocaleData(zh);
 import { WelcomeModule } from './pages/welcome.module';
 import { LoginAuthGuard } from './guards/login-auth.guard';
@@ -34,7 +34,12 @@ import { ApiService } from 'src/service/api.service';
     WelcomeModule,
     WelcomeRoutingModule,
   ],
-  providers: [LoginAuthGuard,CookieService,ApiService,{ provide: NZ_I18N, useValue: zh_CN }],
+  providers: [
+    LoginAuthGuard,
+    CookieService,
+    ApiService,
+    { provide: NZ_I18N, useValue: zh_CN },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

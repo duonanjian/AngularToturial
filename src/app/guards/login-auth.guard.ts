@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import { StoreService } from 'src/service/store.service';
 
 import {
   ActivatedRouteSnapshot,
@@ -15,7 +16,11 @@ import { Observable } from 'rxjs';
 })
 export class LoginAuthGuard implements CanActivate {
   public token: any;
-  constructor(private cookieService: CookieService, private router: Router) {}
+  constructor(
+    private cookieService: CookieService,
+    private router: Router,
+    private storeService: StoreService
+  ) {}
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -25,6 +30,7 @@ export class LoginAuthGuard implements CanActivate {
     | boolean
     | UrlTree {
     this.token = this.cookieService.get('token');
+    this.token = this.storeService.getToken();
     if (this.token) {
       return true;
     } else {
