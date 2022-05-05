@@ -31,6 +31,7 @@ export class ModalComponent
 {
   @Input() modalisVisible: boolean = false;
   @Input() descripe: string = '查看';
+  @Input() data: object = {};
   @Output() modalhandleCancel = new EventEmitter<boolean>();
   @Output() modalhandleOk = new EventEmitter<boolean>();
   constructor(public modalservice: ModalService) {
@@ -42,8 +43,11 @@ export class ModalComponent
   handleOk(status: boolean) {
     this.modalhandleOk.emit(status);
   }
+
+  // 生命周期
   ngOnChanges() {
     console.log('弹框组件 ngOnChanges');
+    console.log(this.data);
   }
   ngOnInit() {
     console.log(this.modalservice);

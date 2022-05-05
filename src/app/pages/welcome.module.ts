@@ -11,7 +11,9 @@ import { WelcomeComponent } from './welcome.component';
 // import { Monitor } from './monitor/monitor.component';
 import { MonitorModule } from './monitor/monitor.module';
 import { WorkplaceModule } from './workplace/workplace.module';
+import { TableModule } from './table/table.module';
 import { FormComponent } from './form/form.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -19,6 +21,7 @@ import { FormComponent } from './form/form.component';
     WelcomeRoutingModule,
     MonitorModule,
     WorkplaceModule,
+    TableModule,
   ],
   declarations: [WelcomeComponent, FormComponent],
   exports: [WelcomeComponent],
