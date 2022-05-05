@@ -1,6 +1,6 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
-import { Menulist, UserInfo } from '../datamodule/UserInfo';
+import { Menulist, UserInfo } from '../dataInterface/Login';
 @Component({
   selector: 'app-welcome',
   templateUrl: './welcome.component.html',
