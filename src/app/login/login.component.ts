@@ -5,6 +5,7 @@ import { UserInfo } from '../datamodule/UserInfo';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { CookieService } from 'ngx-cookie-service';
 import { ApiService } from 'src/service/api.service';
+import { StoreService } from 'src/service/store.service';
 @Component({
   selector: 'login',
   templateUrl: './login.component.html',
@@ -23,7 +24,8 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private message: NzMessageService,
     private cookie: CookieService,
-    private loginService: ApiService
+    private loginService: ApiService,
+    private storeService: StoreService
   ) {}
 
   ngOnInit(): void {
@@ -54,7 +56,8 @@ export class LoginComponent implements OnInit {
       this.loginService
         .get(this.loginURL, this.validateForm.value)
         .subscribe((res) => console.log(res));
-
+      this.storeService.setToken('token1234567890');
+      console.log(this.storeService.getToken());
       this.cookie.set('token', 'token1234567890');
       this.createMessage('success', '登录成功！');
       this.router.navigate(['/welcome']);

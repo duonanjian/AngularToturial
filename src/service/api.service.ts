@@ -6,9 +6,6 @@ import { Observable } from 'rxjs';
 export class ApiService {
   constructor(public httpClient: HttpClient) {}
 
-  // public get(getUrl: string): Observable<any> {
-  //   return this.httpClient.get(getUrl);
-  // }
   get(url: string, urlParams?: HttpParams): Observable<any> {
     return this.httpClient.get(url, {
       params: urlParams,
