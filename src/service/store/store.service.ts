@@ -12,10 +12,8 @@ export class StoreService implements OnInit {
     return this.token;
   }
   setToken(val: string) {
+    this.token = val;
     sessionStorage.setItem('token', val);
   }
-  ngOnInit() {
-    // this.token = sessionStorage.getItem('token');
-    // console.log(this.token);
-  }
+  ngOnInit() {}
 }

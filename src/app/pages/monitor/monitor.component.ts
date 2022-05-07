@@ -4,6 +4,7 @@ import {
   OnInit,
   OnChanges,
   SimpleChanges,
+  OnDestroy,
 } from '@angular/core';
 import { BrowserTransferStateModule } from '@angular/platform-browser';
 
@@ -12,11 +13,11 @@ import { BrowserTransferStateModule } from '@angular/platform-browser';
   templateUrl: './monitor.component.html',
   styleUrls: ['./monitor.component.less'],
 })
-export class Monitor implements OnInit, OnChanges {
+export class Monitor implements OnInit, OnChanges, OnDestroy {
   title: any = 'overviewtitle';
   styleset: any = 'color:green';
   styleset2: any = 'font-size:40px';
-
+  timeID: any;
   secondclass: string = 'secondclass';
   thirdclass: string = 'thirdclass';
   ngClassshow(type: number): any {
@@ -32,12 +33,11 @@ export class Monitor implements OnInit, OnChanges {
         break;
     }
   }
- 
+
   private myss: any = 'private';
   list = [1, 2, 3, 4];
 
   @Input() myname: any = '';
-
 
   ngOnInit() {
     console.log(this.title);
@@ -46,8 +46,11 @@ export class Monitor implements OnInit, OnChanges {
   }
   ngOnChanges(changes: SimpleChanges): void {}
   ngAfterViewInit() {
-    setInterval(() => {
+    this.timeID = setInterval(() => {
       this.title = new Date();
     }, 1000);
+  }
+  ngOnDestroy(): void {
+    clearInterval(this.timeID)
   }
 }

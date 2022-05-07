@@ -1,8 +1,6 @@
-/* tslint:disable:no-unused-variable */
 
 import { TestBed, async, inject } from '@angular/core/testing';
-import { StoreService } from './store.service';
-
+import {StoreService} from './store.service'
 describe('Service: Store', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({

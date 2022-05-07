@@ -12,7 +12,8 @@ import {
   AfterViewChecked,
   OnDestroy,
 } from '@angular/core';
-import { ModalService } from './service/modal.service';
+import { GetIDService } from 'src/service/getID/getID.service';
+
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
@@ -34,14 +35,15 @@ export class ModalComponent
   @Input() data: object = {};
   @Output() modalhandleCancel = new EventEmitter<boolean>();
   @Output() modalhandleOk = new EventEmitter<boolean>();
-  constructor(public modalservice: ModalService) {
-    console.log(this.modalservice);
-  }
+  constructor(public modalservice: GetIDService) {}
   handleCancel(status: boolean) {
     this.modalhandleCancel.emit(status);
   }
   handleOk(status: boolean) {
     this.modalhandleOk.emit(status);
+  }
+  passvalue() {
+    console.log('modal #modal');
   }
 
   // 生命周期
@@ -51,12 +53,11 @@ export class ModalComponent
   }
   ngOnInit() {
     console.log(this.modalservice);
-
     console.log('弹框组件 ngOnInit');
   }
-  // ngDoCheck() {
-  //   console.log('弹框组件 ngDoCheck');
-  // }
+  ngDoCheck() {
+    console.log('弹框组件 ngDoCheck');
+  }
   ngAfterContentInit() {
     console.log('弹框组件 ngAfterContentInit');
   }

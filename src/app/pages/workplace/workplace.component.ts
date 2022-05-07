@@ -8,9 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class WorkplaceComponent implements OnInit {
   descripe: string = '查看';
   modalisVisible: boolean = false;
-  constructor() {
 
-  }
+  constructor() {}
   showModal(val: string) {
     this.modalisVisible = true;
     this.descripe = val;
@@ -24,7 +23,5 @@ export class WorkplaceComponent implements OnInit {
 
     this.fatherhandleCancel(val);
   }
-  ngOnInit(): void {
-   
-  }
+  ngOnInit(): void {}
 }

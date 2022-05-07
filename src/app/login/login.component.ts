@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { CookieService } from 'ngx-cookie-service';
-import { ApiService } from 'src/service/api.service';
-import { StoreService } from 'src/service/store.service';
+import { ApiService } from 'src/service/api/api.service';
+import { StoreService } from 'src/service/store/store.service';
 @Component({
   selector: 'login',
   templateUrl: './login.component.html',
@@ -27,9 +27,9 @@ export class LoginComponent implements OnInit {
     this.loginService.get(this.loginURL).subscribe((res) => console.log(res));
     // 初始化设置初始值，初始要求
     this.validateForm = this.fb.group({
-      userName: [this.cookie.get('userName'), [Validators.required]],
-      password: [this.cookie.get('password'), [Validators.required]],
-      remember: [this.cookie.get('remember')],
+      userName: [this.cookie.get('userName') || 'admin', [Validators.required]],
+      password: [this.cookie.get('password') || 123456, [Validators.required]],
+      remember: [this.cookie.get('remember') ? true : false],
     });
   }
   // 提交表单
@@ -49,8 +49,8 @@ export class LoginComponent implements OnInit {
             this.cookie.delete('password');
           }
           console.log(res);
-          this.storeService.setToken(res.token);
-          this.cookie.set('token', res.token);
+          this.storeService.setToken(res.data.token);
+          this.cookie.set('token', res.data.token);
           this.createMessage('success', '登录成功！');
           this.router.navigate(['/welcome']);
         });
