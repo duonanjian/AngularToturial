@@ -101,7 +101,8 @@
             "inlineStyleLanguage": "less",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/assets/mock"
             ],
             "styles": [
               "src/styles.less"

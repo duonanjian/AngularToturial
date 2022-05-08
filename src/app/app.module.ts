@@ -18,6 +18,7 @@ import { WelcomeModule } from './pages/welcome.module';
 import { LoginAuthGuard } from './guards/login-auth.guard';
 import { CookieService } from 'ngx-cookie-service';
 import { ApiService } from 'src/service/api/api.service';
+import { dataHttpService } from 'src/service/api/data-http';
 @NgModule({
   declarations: [AppComponent, LoginComponent],
   imports: [
@@ -37,6 +38,7 @@ import { ApiService } from 'src/service/api/api.service';
     LoginAuthGuard,
     CookieService,
     ApiService,
+    dataHttpService,
     { provide: NZ_I18N, useValue: zh_CN },
   ],
   bootstrap: [AppComponent],
