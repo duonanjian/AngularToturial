@@ -9,8 +9,8 @@ export class dataHttpService {
   data: any = {};
 
   getDataService(apiName: string, param?: any, header?: any) {
-    const baseurl =
-      'https://mock.mengxuegu.com/mock/6188fda74c5d9932f7e75822/duonanjian';
+    const baseUrl =
+      'https://mock.mengxuegu.com/mock/62772ae994a78564b30657c8/Angular';
     if (Object.prototype.hasOwnProperty.call(apiList, apiName)) {
       const api = apiList[apiName];
       if (api.mock) {
@@ -23,7 +23,7 @@ export class dataHttpService {
           );
           header = { headers: headers };
         }
-        const totalURL = baseurl + api.url;
+        const totalURL = baseUrl + api.url;
         const totalURLWithParams = totalURL + this.getUrl(param);
         if (api.method.toLocaleLowerCase() === 'post') {
           return this.http.post(totalURL, param, header);

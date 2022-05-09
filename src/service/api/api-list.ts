@@ -27,4 +27,11 @@ export const apiList: APIinterface = {
     mock: false,
     mockURL: '',
   },
+  table: {
+    url: '/table',
+    method: 'get',
+    description: 'table data',
+    mock: false,
+    mockURL: '',
+  },
 };

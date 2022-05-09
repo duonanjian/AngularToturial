@@ -13,12 +13,32 @@
       <td nzAlign="center">{{ data.age }}</td>
       <td nzAlign="center">{{ data.address }}</td>
       <td nzAlign="center" class="action">
-        <a>查看</a>
+        <a (click)="showModal('查看')">查看</a>
         <nz-divider nzType="vertical"></nz-divider>
-        <a>修改</a>
+        <a (click)="showModal('修改')">修改</a>
         <nz-divider nzType="vertical"></nz-divider>
-        <a>删除</a>
+        <a
+          nz-popconfirm
+          nzPopconfirmTitle="确定删除？"
+          nzPopconfirmPlacement="bottom"
+          (nzOnConfirm)="confirmDelete()"
+          >删除</a
+        >
       </td>
     </tr>
   </tbody>
 </nz-table>
+
+<app-modal
+  (modalhandleCancel)="fatherhandleCancel($event)"
+  (modalhandleOk)="fatherhandleOk($event)"
+  [modalisVisible]="modalisVisible"
+  [descripe]="descripe"
+  #modal
+>
+  <div>
+    <p>Content one</p>
+    <p>Content two</p>
+    <p>Content three</p>
+  </div>
+</app-modal>

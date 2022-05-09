@@ -4,10 +4,12 @@
   (nzOnCancel)="handleCancel(false)"
   (nzOnOk)="handleOk(false)"
 >
-  <ng-container *nzModalContent>
-    <p>Content one</p>
-    <p>Content two</p>
-    <p>Content three</p>
-    <p>{{ modalservice.servID }}</p>
-  </ng-container>
+  <div>
+    <ng-content></ng-content>
+    <!-- <ng-container *nzModalContent>
+     
+      <p>{{ modalservice.servID }}</p>
+    </ng-container> -->
+  </div>
 </nz-modal>
+<ng-content></ng-content>
