@@ -30,6 +30,7 @@ export class ModalComponent
     AfterViewChecked,
     OnDestroy
 {
+  @Input() modalWidth: number = 500;
   @Input() modalisVisible: boolean = false;
   @Input() descripe: string = '查看';
   @Input() data: object = {};

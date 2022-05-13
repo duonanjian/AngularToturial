@@ -5,9 +5,7 @@ import { apiList } from './api-list';
 @Injectable()
 export class dataHttpService {
   constructor(public http: HttpClient) {}
-
   data: any = {};
-
   getDataService(apiName: string, param?: any, header?: any) {
     const baseUrl =
       'https://mock.mengxuegu.com/mock/62772ae994a78564b30657c8/Angular';

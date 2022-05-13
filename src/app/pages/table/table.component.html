@@ -13,7 +13,7 @@
       <td nzAlign="center">{{ data.age }}</td>
       <td nzAlign="center">{{ data.address }}</td>
       <td nzAlign="center" class="action">
-        <a (click)="showModal('查看')">查看</a>
+        <a (click)="showModal('查看', data)">查看</a>
         <nz-divider nzType="vertical"></nz-divider>
         <a (click)="showModal('修改')">修改</a>
         <nz-divider nzType="vertical"></nz-divider>
@@ -34,11 +34,39 @@
   (modalhandleOk)="fatherhandleOk($event)"
   [modalisVisible]="modalisVisible"
   [descripe]="descripe"
+  [modalWidth]="800"
   #modal
 >
-  <div>
-    <p>Content one</p>
-    <p>Content two</p>
-    <p>Content three</p>
-  </div>
+  <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()" class="ant-advanced-search-form">
+    <div nz-row [nzGutter]="24">
+      <div nz-col [nzSpan]="8">
+        <nz-form-item>
+          <nz-form-label>年龄</nz-form-label>
+          <nz-form-control>
+            <input nz-input formControlName="age" placeholder="请输入姓名" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="8">
+        <nz-form-item>
+          <nz-form-label>姓名</nz-form-label>
+          <nz-form-control>
+            <input nz-input formControlName="name" placeholder="请输入姓名" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="8">
+        <nz-form-item>
+          <nz-form-label>地址</nz-form-label>
+          <nz-form-control>
+            <input
+              nz-input
+              formControlName="address"
+              placeholder="请输入姓名"
+            />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+  </form>
 </app-modal>

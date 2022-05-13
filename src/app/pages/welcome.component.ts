@@ -18,6 +18,7 @@ export class WelcomeComponent implements OnInit, OnChanges {
       { name: '监视', path: '/monitor' },
       { name: '工作区', path: '/workplace' },
       { name: '表单', path: '/form' },
+      { name: 'Fabric', path: '/canvas' },
     ];
     this.userinfo = {
       username: 'admin',

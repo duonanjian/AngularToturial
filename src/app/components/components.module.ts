@@ -12,6 +12,6 @@ import { GetIDService } from 'src/service/getID/getID.service';
   imports: [CommonModule, NgZorroAntdModule],
   declarations: [ButtonComponent, ModalComponent],
   exports: [ButtonComponent, ModalComponent],
-  providers:[GetIDService]
+  providers: [GetIDService],
 })
 export class ComponentsModule {}

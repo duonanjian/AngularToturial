@@ -1,0 +1,11 @@
+<div class="box">
+  <app-button
+    nz-button
+    nzType="primary"
+    ButtonDescripe="查看"
+    (click)="setDimensions(undefined, 900, 500)"
+  >
+    {{ status ? "还原" : "设置宽高" }}
+  </app-button>
+  <canvas id="canvas" width="1000" height="550"></canvas>
+</div>

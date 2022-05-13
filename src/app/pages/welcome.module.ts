@@ -9,11 +9,14 @@ import { NgZorroAntdModule } from 'src/ant-design-source/ng-zorro-antd.module';
 import { WelcomeComponent } from './welcome.component';
 // 不导入相应模块，也能工作，但是不能用angular的功能
 // import { Monitor } from './monitor/monitor.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { MonitorModule } from './monitor/monitor.module';
 import { WorkplaceModule } from './workplace/workplace.module';
 import { TableModule } from './table/table.module';
 import { FormComponent } from './form/form.component';
-
+import { CanvasComponent } from './canvas/canvas.component';
+import { ComponentsModule } from '../components/components.module';
 @NgModule({
   imports: [
     CommonModule,
@@ -22,8 +25,10 @@ import { FormComponent } from './form/form.component';
     MonitorModule,
     WorkplaceModule,
     TableModule,
+    ComponentsModule,
+    FormsModule, ReactiveFormsModule
   ],
-  declarations: [WelcomeComponent, FormComponent],
+  declarations: [WelcomeComponent, FormComponent, CanvasComponent],
   exports: [WelcomeComponent],
 })
 export class WelcomeModule {}
