@@ -20,20 +20,15 @@ import { GetIDService } from 'src/service/getID/getID.service';
   styleUrls: ['./modal.component.less'],
 })
 // DoCheck,
+// OnChanges,
+// AfterContentChecked,
+// AfterViewChecked,
 export class ModalComponent
-  implements
-    OnInit,
-    OnChanges,
-    AfterContentInit,
-    AfterContentChecked,
-    AfterViewInit,
-    AfterViewChecked,
-    OnDestroy
+  implements OnInit, AfterContentInit, AfterViewInit, OnDestroy
 {
   @Input() modalWidth: number = 500;
   @Input() modalisVisible: boolean = false;
   @Input() descripe: string = '查看';
-  @Input() data: object = {};
   @Output() modalhandleCancel = new EventEmitter<boolean>();
   @Output() modalhandleOk = new EventEmitter<boolean>();
   constructor(public modalservice: GetIDService) {}
@@ -50,27 +45,26 @@ export class ModalComponent
   // 生命周期
   ngOnChanges() {
     console.log('弹框组件 ngOnChanges');
-    console.log(this.data);
   }
   ngOnInit() {
     console.log(this.modalservice);
     console.log('弹框组件 ngOnInit');
   }
-  ngDoCheck() {
-    console.log('弹框组件 ngDoCheck');
-  }
+  // ngDoCheck() {
+  //   console.log('弹框组件 ngDoCheck');
+  // }
   ngAfterContentInit() {
     console.log('弹框组件 ngAfterContentInit');
   }
-  ngAfterContentChecked() {
-    console.log('弹框组件 ngAfterContentChecked');
-  }
+  // ngAfterContentChecked() {
+  //   console.log('弹框组件 ngAfterContentChecked');
+  // }
   ngAfterViewInit() {
     console.log('弹框组件 ngAfterViewInit');
   }
-  ngAfterViewChecked() {
-    console.log('弹框组件 ngAfterViewChecked');
-  }
+  // ngAfterViewChecked() {
+  //   console.log('弹框组件 ngAfterViewChecked');
+  // }
   ngOnDestroy() {
     console.log('弹框组件 ngOnDestroy');
   }

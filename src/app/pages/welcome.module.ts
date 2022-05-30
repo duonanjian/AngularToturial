@@ -17,6 +17,7 @@ import { TableModule } from './table/table.module';
 import { FormComponent } from './form/form.component';
 import { CanvasComponent } from './canvas/canvas.component';
 import { ComponentsModule } from '../components/components.module';
+import { HighlightDirective } from 'src/directive/highLightDirective';
 @NgModule({
   imports: [
     CommonModule,
@@ -26,9 +27,15 @@ import { ComponentsModule } from '../components/components.module';
     WorkplaceModule,
     TableModule,
     ComponentsModule,
-    FormsModule, ReactiveFormsModule
+    FormsModule,
+    ReactiveFormsModule,
   ],
-  declarations: [WelcomeComponent, FormComponent, CanvasComponent],
+  declarations: [
+    WelcomeComponent,
+    FormComponent,
+    CanvasComponent,
+    HighlightDirective,
+  ],
   exports: [WelcomeComponent],
 })
 export class WelcomeModule {}

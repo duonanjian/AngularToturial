@@ -13,13 +13,13 @@ export class TableComponent implements OnInit {
   descripe: string = '查看';
   modalisVisible: boolean = false;
   listOfData: any;
+  lookonly: boolean = false;
 
   constructor(
     private dataHttpService: dataHttpService,
     private fb: FormBuilder
   ) {}
   ngOnInit() {
-    console.log(this.dataHttpService)
     this.validateForm = this.fb.group({
       age: '',
       address: '',
@@ -35,13 +35,17 @@ export class TableComponent implements OnInit {
     });
   }
   showModal(val: string, data?: any) {
+    if (val === '查看') {
+      this.lookonly = true;
+    } else {
+      this.lookonly = false;
+    }
     this.modalisVisible = true;
     this.descripe = val;
-    console.log(data);
     this.validateForm = this.fb.group({
-      age: data.age,
-      address: data.address,
-      name: data.name,
+      age: [{ value: data.age, disabled: this.lookonly }],
+      address: [{ value: data.address, disabled: this.lookonly }],
+      name: [{ value: data.name, disabled: this.lookonly }],
     });
   }
   fatherhandleCancel(val: boolean) {
@@ -49,6 +53,8 @@ export class TableComponent implements OnInit {
     this.resetForm();
   }
   fatherhandleOk(val: boolean) {
+    console.log('表单提交值！', this.validateForm.value);
+    this.submitForm();
     this.fatherhandleCancel(val);
   }
   confirmDelete() {
@@ -61,7 +67,16 @@ export class TableComponent implements OnInit {
       c.show = this.isCollapse ? index < 6 : true;
     });
   }
-  submitForm(): void {}
+  submitForm(): void {
+    this.dataHttpService.getDataService('table').subscribe({
+      next: (val: any) => {
+        this.listOfData = val.data;
+        console.log(val);
+      },
+      error: (e) => console.error(e),
+      complete: () => console.log('complete'),
+    });
+  }
   resetForm(): void {
     this.validateForm.reset();
   }
