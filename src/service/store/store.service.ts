@@ -1,19 +1,23 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
-export class StoreService implements OnInit {
+export class StoreService {
   token: string | null = '';
   constructor() {
-    this.token = sessionStorage.getItem('token');
+    this.token = localStorage.getItem('token');
+    console.log(this.token);
   }
-  getToken() {
+  get Token(): any {
     return this.token;
   }
-  setToken(val: string) {
+  set Token(val: string) {
     this.token = val;
-    sessionStorage.setItem('token', val);
+    localStorage.setItem('token', val);
+  }
+  removeToken() {
+    localStorage.removeItem('token');
   }
   ngOnInit() {}
 }

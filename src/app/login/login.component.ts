@@ -65,10 +65,11 @@ export class LoginComponent implements OnInit {
             this.cookie.delete('password');
           }
           console.log(res);
-          this.storeService.setToken(res.data.token);
+          this.router.navigate(['welcome/basic/monitor']);
+
+          this.storeService.Token = res.data.token;
           this.cookie.set('token', res.data.token);
           this.createMessage('success', '登录成功！');
-          this.router.navigate(['/welcome']);
         });
     } else {
       this.openDirtyControl(this.validateForm);

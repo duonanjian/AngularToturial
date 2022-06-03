@@ -26,10 +26,10 @@
           </li>
         </ul>
       </li>
-      <li nz-submenu nzOpen nzTitle="表格" nzIcon="form">
+      <li nz-submenu nzOpen nzTitle="绘图" nzIcon="form">
         <ul>
           <li nz-menu-item nzMatchRouter>
-            <a routerLink="./table">表格</a>
+            <a routerLink="./canvas">幕布</a>
           </li>
         </ul>
       </li>
@@ -58,22 +58,6 @@
             </ul>
           </nz-dropdown-menu>
         </div>
-
-        <!-- <button
-          nz-button
-          nzType="primary"
-          nz-popover
-          nzPopoverTitle=""
-          [(nzPopoverVisible)]="visible"
-          (nzPopoverVisibleChange)="change($event)"
-          nzPopoverTrigger="click"
-          [nzPopoverContent]="contentTemplate"
-        >
-          Click me
-        </button>
-        <ng-template #contentTemplate>
-          <a (click)="logout()">退出登录</a>
-        </ng-template> -->
       </div>
     </nz-header>
     <nz-content>

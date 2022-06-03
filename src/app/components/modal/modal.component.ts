@@ -23,9 +23,7 @@ import { GetIDService } from 'src/service/getID/getID.service';
 // OnChanges,
 // AfterContentChecked,
 // AfterViewChecked,
-export class ModalComponent
-  implements OnInit, AfterContentInit, AfterViewInit, OnDestroy
-{
+export class ModalComponent implements OnInit {
   @Input() modalWidth: number = 500;
   @Input() modalisVisible: boolean = false;
   @Input() descripe: string = '查看';
@@ -43,9 +41,9 @@ export class ModalComponent
   }
 
   // 生命周期
-  ngOnChanges() {
-    console.log('弹框组件 ngOnChanges');
-  }
+  // ngOnChanges() {
+  //   console.log('弹框组件 ngOnChanges');
+  // }
   ngOnInit() {
     console.log(this.modalservice);
     console.log('弹框组件 ngOnInit');
@@ -53,19 +51,19 @@ export class ModalComponent
   // ngDoCheck() {
   //   console.log('弹框组件 ngDoCheck');
   // }
-  ngAfterContentInit() {
-    console.log('弹框组件 ngAfterContentInit');
-  }
+  // ngAfterContentInit() {
+  //   console.log('弹框组件 ngAfterContentInit');
+  // }
   // ngAfterContentChecked() {
   //   console.log('弹框组件 ngAfterContentChecked');
   // }
-  ngAfterViewInit() {
-    console.log('弹框组件 ngAfterViewInit');
-  }
+  // ngAfterViewInit() {
+  //   console.log('弹框组件 ngAfterViewInit');
+  // }
   // ngAfterViewChecked() {
   //   console.log('弹框组件 ngAfterViewChecked');
   // }
-  ngOnDestroy() {
-    console.log('弹框组件 ngOnDestroy');
-  }
+  // ngOnDestroy() {
+  //   console.log('弹框组件 ngOnDestroy');
+  // }
 }
