@@ -32,9 +32,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     // 这里有问题，初始化storeService的时候token=null，之后点击了之后还是没有触发更新，导致token没有更新
     // 还是null，刷新页面，重载storeService，此时token有值
     if (currentUrl === '/login' && token) {
-      console.log('2222222222222');
-
-      this.router.navigate(['/monitor']);
+      this.router.navigate(['/welcome/basic/monitor']);
       return true;
     } else if (currentUrl === '/login') {
       return true;

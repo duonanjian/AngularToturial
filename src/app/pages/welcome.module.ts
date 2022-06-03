@@ -20,8 +20,10 @@ const routes: Routes = [
     path: '',
     component: WelcomeComponent,
     children: [
+      { path: '', redirectTo: 'canvas', pathMatch: 'full' },
       {
         path: 'basic',
+        data: { preload: false },
         loadChildren: () =>
           import('./basic/basic.module').then((m) => m.BasicModule),
       },

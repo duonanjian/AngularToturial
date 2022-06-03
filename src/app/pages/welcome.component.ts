@@ -17,7 +17,7 @@ export class WelcomeComponent implements OnInit, OnChanges {
     // path 不加 ‘.’ http://localhost:51645/form
     // path 加 ‘.’ http://localhost:51645/weicome/form
     this.menulist = [
-      { name: '监视', path: '/basic/monitor' },
+      { name: '监视', path: './basic/monitor' },
       { name: '工作区', path: '/basic/workplace' },
       { name: '表单', path: '/basic/form' },
       { name: '表格', path: '/basic/table' },

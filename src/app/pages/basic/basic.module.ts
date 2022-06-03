@@ -18,7 +18,7 @@ const routes: Routes = [
     path: '',
     component: BasicComponent,
     children: [
-      { path: '', pathMatch: 'full', redirectTo: '/monitor' },
+      { path: '', redirectTo: 'monitor', pathMatch: 'full' },
       { path: 'monitor', component: Monitor },
       { path: 'workplace', component: WorkplaceComponent },
       { path: 'form', component: FormComponent },
