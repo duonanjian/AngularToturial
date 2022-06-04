@@ -22,7 +22,6 @@ import { dataHttpService } from 'src/service/api/data-http';
   declarations: [AppComponent, LoginComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
@@ -31,6 +30,7 @@ import { dataHttpService } from 'src/service/api/data-http';
     NgZorroAntdModule,
     // welcome组件相关
     WelcomeModule,
+    AppRoutingModule,
   ],
   providers: [
     AuthGuard,

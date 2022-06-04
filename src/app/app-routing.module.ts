@@ -5,7 +5,11 @@ import { AuthGuard } from './guards/login-auth.guard';
 import { MyPreloadingStrategy } from './common/preload';
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/login' },
-  { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
+  {
+    path: 'login',
+    component: LoginComponent,
+    canActivate: [AuthGuard],
+  },
   {
     path: 'welcome',
     data: { preload: false },

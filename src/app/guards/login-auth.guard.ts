@@ -22,7 +22,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     private storeService: StoreService
   ) {}
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    console.log(window.history.length)
+    console.log(window.history.length);
     // if(window.history.length === 2) return false
     console.log(route, state);
     const currentUrl = state.url;
@@ -39,7 +39,6 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     } else {
       // 随时检查token状态
       const token = localStorage.getItem('token');
-      console.log(token);
       if (token) return true;
       this.router.navigate(['/login']);
       return false;
