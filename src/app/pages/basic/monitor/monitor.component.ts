@@ -6,20 +6,26 @@ import {
   SimpleChanges,
   OnDestroy,
 } from '@angular/core';
-import { BrowserTransferStateModule } from '@angular/platform-browser';
-
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { Increment, Decrement, Reset } from 'src/store/action';
 @Component({
   selector: 'app-component-overview',
   templateUrl: './monitor.component.html',
   styleUrls: ['./monitor.component.less'],
 })
 export class Monitor implements OnInit, OnChanges, OnDestroy {
+  count$: Observable<number>;
   title: any = 'overviewtitle';
   styleset: any = 'color:green';
   styleset2: any = 'font-size:40px';
   timeID: any;
   secondclass: string = 'secondclass';
   thirdclass: string = 'thirdclass';
+
+  constructor(private store: Store<{ count: number }>) {
+    this.count$ = store.select('count');
+  }
   ngClassshow(type: number): any {
     switch (type) {
       case 1:
@@ -40,6 +46,7 @@ export class Monitor implements OnInit, OnChanges, OnDestroy {
   @Input() myname: any = '';
 
   ngOnInit() {
+    this.store.dispatch(Increment());
     console.log(this.title);
     this.myss = 'zhoufdei';
     console.log(this.myss);
@@ -51,6 +58,6 @@ export class Monitor implements OnInit, OnChanges, OnDestroy {
     }, 1000);
   }
   ngOnDestroy(): void {
-    clearInterval(this.timeID)
+    clearInterval(this.timeID);
   }
 }

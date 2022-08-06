@@ -12,7 +12,7 @@ const routes: Routes = [
   },
   {
     path: 'welcome',
-    data: { preload: false },
+    data: { preload: true },
     loadChildren: () =>
       import('./pages/welcome.module').then((m) => m.WelcomeModule),
   },

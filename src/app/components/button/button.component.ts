@@ -18,6 +18,6 @@ export class ButtonComponent implements OnInit {
     console.log(this.getIDService);
   }
   ButtonClick() {
-    this.ButtonEvent.emit();
+    this.ButtonEvent.emit('12345Button');
   }
 }

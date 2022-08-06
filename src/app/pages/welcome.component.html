@@ -28,7 +28,7 @@
       </li>
       <li nz-submenu nzOpen nzTitle="绘图" nzIcon="form">
         <ul>
-          <li nz-menu-item nzMatchRouter>
+          <li nz-menu-item nzMatchRouter (click)="showcanvas()">
             <a routerLink="./canvas">幕布</a>
           </li>
         </ul>
@@ -46,6 +46,12 @@
             (click)="isCollapsed = !isCollapsed"
           ></i>
         </span>
+        <nz-breadcrumb
+          [nzAutoGenerate]="true"
+          class="disabled"
+          (click)="breadcrumbclick()"
+        >
+        </nz-breadcrumb>
         <div>
           <nz-avatar nzIcon="user" [nzSrc]="userinfo.url"></nz-avatar>
           <a style="padding-left: 15px" nz-dropdown [nzDropdownMenu]="menu">

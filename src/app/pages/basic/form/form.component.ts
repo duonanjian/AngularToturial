@@ -1,5 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, Subject, BehaviorSubject, ReplaySubject } from 'rxjs';
+import {
+  Observable,
+  firstValueFrom,
+  lastValueFrom,
+  Subject,
+  BehaviorSubject,
+  ReplaySubject,
+  from,
+  fromEvent,
+  repeat,
+  timer,
+} from 'rxjs';
 import { of, interval } from 'rxjs';
 import { filter, map, take } from 'rxjs/operators';
 @Component({
@@ -12,7 +23,6 @@ export class FormComponent implements OnInit {
   constructor() {
     this.autho = '123456';
   }
-  mySubject: ReplaySubject<any> = new ReplaySubject(); // 定义取最后m次的值
 
   websocketFunction() {
     const host = 'localhost:8002/';
@@ -41,16 +51,52 @@ export class FormComponent implements OnInit {
       console.log('websocket error:', event);
     };
   }
-  ngOnInit(): void {
-    this.websocketFunction();
-    console.log(this.autho);
-    this.mySubject.subscribe((value) => console.log('A:' + value)); // 全程收到值
-    this.mySubject.next(0);
-    this.mySubject.next(1);
-    this.mySubject.next(2);
-    this.mySubject.subscribe((value) => console.log('B:' + value)); // 收到最后m次的值
-    setTimeout(() => {
-      this.mySubject.subscribe((value) => console.log('C:' + value)); // 1s后订阅，收到最后m次的值
-    }, 1000);
+  async ngOnInit(): Promise<void> {
+    const observaber = {
+      next: (val: any) => console.log(val),
+      error: (error: any) => console.log(error),
+      complete: () => console.log('完成'),
+    };
+    // const createObservable = (observaber: any) => {
+    //   let number = 1;
+    //   const time = setInterval(() => {
+    //     observaber.next(number++);
+    //   }, 1000);
+    //   return {
+    //     unsubscribe: () => {
+    //       clearInterval(time);
+    //     },
+    //   };
+    // };
+    // const myobservable = new Observable(createObservable);
+
+    // const subscription = myobservable.subscribe(observaber);
+    // console.log(subscription);
+    // setTimeout(() => {
+    //   subscription.unsubscribe();
+    // }, 5000);
+
+    // const last = await lastValueFrom(myobservable);
+
+    // const first = await firstValueFrom(myobservable);
+    // console.log(myobservable,first);
+    // console.log(myobservable, last);
+
+    // const fromObservable = from([1, 2, 3]);
+    // fromObservable.subscribe(observaber);
+
+    // const el = document.querySelectorAll('#top');
+    // const fromevent = fromEvent(el, 'click');
+    // fromevent.subscribe(observaber)
+
+    // const ofObservable = from([1, 2, 3]).pipe(repeat(3));
+    // ofObservable.subscribe(observaber);
+
+    // const timerOb = timer(5000, 1000).pipe(map((x) => x + 10));
+    // timerOb.subscribe(observaber);
+  }
+
+  buttonshow(val: any) {
+    alert(val);
   }
 }

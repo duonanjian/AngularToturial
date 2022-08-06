@@ -7,7 +7,6 @@ export class StoreService {
   token: string | null = '';
   constructor() {
     this.token = localStorage.getItem('token');
-    console.log(this.token);
   }
   get Token(): any {
     return this.token;

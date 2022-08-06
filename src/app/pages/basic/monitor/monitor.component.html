@@ -9,6 +9,8 @@
   <li [ngClass]="ngClassshow(1)">secondclass</li>
   <li [ngClass]="ngClassshow(2)">secondclass</li>
   <li [ngClass]="ngClassshow(3)">secondclass</li>
+
+  <div>Current Count: {{ count$ | async }}</div>
 </ul>
 
 <p>{{ title }}</p>
@@ -25,17 +27,3 @@
   <div *ngSwitchDefault>ngswitch default</div>
 </div>
 
-
-
-<!-- <nz-modal
-  [(nzVisible)]="modalisVisible"
-  [nzTitle]="descripe"
-  (nzOnCancel)="handleCancel()"
-  (nzOnOk)="handleOk()"
->
-  <ng-container *nzModalContent>
-    <p>Content one</p>
-    <p>Content two</p>
-    <p>Content three</p>
-  </ng-container>
-</nz-modal> -->

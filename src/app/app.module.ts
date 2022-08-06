@@ -18,6 +18,9 @@ import { AuthGuard } from './guards/login-auth.guard';
 import { CookieService } from 'ngx-cookie-service';
 import { ApiService } from 'src/service/api/api.service';
 import { dataHttpService } from 'src/service/api/data-http';
+import { StoreModule } from '@ngrx/store';
+import { conterReducer } from 'src/store/reducer';
+import { RouteConfigLoadStart } from '@angular/router';
 @NgModule({
   declarations: [AppComponent, LoginComponent],
   imports: [
@@ -31,12 +34,14 @@ import { dataHttpService } from 'src/service/api/data-http';
     // welcome组件相关
     WelcomeModule,
     AppRoutingModule,
+    StoreModule.forRoot({ count: conterReducer })
   ],
   providers: [
     AuthGuard,
     CookieService,
     ApiService,
     dataHttpService,
+    // RouteConfigLoadStart,
     { provide: NZ_I18N, useValue: zh_CN },
   ],
   bootstrap: [AppComponent],

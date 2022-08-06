@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { Router, RouteConfigLoadStart } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd/message';
@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
+    // private RouteConfigLoadStart: RouteConfigLoadStart,
     private message: NzMessageService,
     private cookie: CookieService,
     private loginService: ApiService,
@@ -27,6 +28,7 @@ export class LoginComponent implements OnInit {
   ) {}
   // 初始化赋值
   ngOnInit(): void {
+    console.log(this.router.events, );
     // fetch请求本地json
     fetch('assets/mock/login.json')
       .then((res) => res.json())

@@ -12,7 +12,7 @@ import { WelcomeComponent } from './welcome.component';
 
 import { CanvasComponent } from './canvas/canvas.component';
 import { ComponentsModule } from '../components/components.module';
-import { HighlightDirective } from 'src/directive/highLightDirective';
+// import { HighlightDirective } from 'src/directive/highLightDirective';
 import { AuthGuard } from '../guards/login-auth.guard';
 
 const routes: Routes = [
@@ -23,11 +23,13 @@ const routes: Routes = [
       { path: '', redirectTo: 'canvas', pathMatch: 'full' },
       {
         path: 'basic',
-        data: { preload: false },
+        data: { preload: false, breadcrumb: 'Display Name' },
         loadChildren: () =>
           import('./basic/basic.module').then((m) => m.BasicModule),
       },
-      { path: 'canvas', component: CanvasComponent },
+      { path: 'canvas', component: CanvasComponent,data: {
+        breadcrumb: 'Display Name'
+      } },
     ],
     canActivateChild: [AuthGuard],
     canActivate: [AuthGuard],
@@ -42,7 +44,9 @@ const routes: Routes = [
     NgZorroAntdModule,
     ComponentsModule,
   ],
-  declarations: [WelcomeComponent, CanvasComponent, HighlightDirective],
+  declarations: [WelcomeComponent, CanvasComponent],
   exports: [WelcomeComponent],
 })
-export class WelcomeModule {}
+export class WelcomeModule {
+  
+}
