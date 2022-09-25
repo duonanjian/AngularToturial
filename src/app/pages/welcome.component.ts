@@ -1,6 +1,6 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Menulist, UserInfo } from '../dataInterface/Login';
+import { Menulist, UserInfo } from '../definition';
 import { StoreService } from 'src/service/store/store.service';
 import { DataService } from 'src/service/interraction/button';
 @Component({

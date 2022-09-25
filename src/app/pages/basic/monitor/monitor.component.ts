@@ -22,7 +22,7 @@ export class Monitor implements OnInit, OnChanges, OnDestroy {
   timeID: any;
   secondclass: string = 'secondclass';
   thirdclass: string = 'thirdclass';
-
+  myStyle:any
   constructor(private store: Store<{ count: number }>) {
     this.count$ = store.select('count');
   }
@@ -50,6 +50,9 @@ export class Monitor implements OnInit, OnChanges, OnDestroy {
     console.log(this.title);
     this.myss = 'zhoufdei';
     console.log(this.myss);
+    this.myStyle = {
+      backgroundColor:'red'
+    }
   }
   ngOnChanges(changes: SimpleChanges): void {}
   ngAfterViewInit() {

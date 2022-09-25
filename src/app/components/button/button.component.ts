@@ -5,6 +5,7 @@ import { GetIDService } from 'src/service/getID/getID.service';
   selector: 'app-button',
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.less'],
+  // 每个组件生成一个独立的service
   providers: [GetIDService],
 })
 export class ButtonComponent implements OnInit {
@@ -12,12 +13,11 @@ export class ButtonComponent implements OnInit {
   @Input() nzType: 'primary' | 'dashed' | 'link' | 'text' = 'primary';
   @Input() nzShape: 'circle' | 'round' = 'round';
   @Output() ButtonEvent = new EventEmitter();
-  constructor(private getIDService: GetIDService) {}
-
+  constructor(private getIDService: GetIDService) { }
   ngOnInit() {
-    console.log(this.getIDService);
+    console.log(this.getIDService, 'button this.getIDService');
   }
   ButtonClick() {
-    this.ButtonEvent.emit('12345Button');
+    this.ButtonEvent.emit('this is button emit');
   }
 }
