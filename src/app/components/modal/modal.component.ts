@@ -18,6 +18,7 @@ import { GetIDService } from 'src/service/getID/getID.service';
   selector: 'app-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.less'],
+  providers: [GetIDService],
 })
 // DoCheck,
 // OnChanges,
@@ -27,6 +28,10 @@ export class ModalComponent implements OnInit {
   @Input() modalWidth: number = 500;
   @Input() modalisVisible: boolean = false;
   @Input() descripe: string = '查看';
+  @Input()
+  set getsetcontent(val: any) {
+    console.log(val, 'setset');
+  }
   @Output() modalhandleCancel = new EventEmitter<boolean>();
   @Output() modalhandleOk = new EventEmitter<boolean>();
   constructor(public modalservice: GetIDService) {}
@@ -45,7 +50,7 @@ export class ModalComponent implements OnInit {
   //   console.log('弹框组件 ngOnChanges');
   // }
   ngOnInit() {
-    console.log(this.modalservice);
+    console.log(this.modalservice.servID);
     console.log('弹框组件 ngOnInit');
   }
   // ngDoCheck() {

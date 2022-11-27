@@ -13,6 +13,7 @@ import {
 } from 'rxjs';
 import { of, interval } from 'rxjs';
 import { filter, map, take } from 'rxjs/operators';
+import moment from 'moment';
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -20,6 +21,7 @@ import { filter, map, take } from 'rxjs/operators';
 })
 export class FormComponent implements OnInit {
   public autho!: string;
+  datarange: any;
   constructor() {
     this.autho = '123456';
   }
@@ -57,6 +59,10 @@ export class FormComponent implements OnInit {
       error: (error: any) => console.log(error),
       complete: () => console.log('完成'),
     };
+    const from = 'Wed Aug 24 2022 20:11:43 GMT+0800';
+    const end = 'Wed Aug 24 2022 20:11:43 GMT+0800';
+    console.log(moment(from).diff(end));
+
     // const createObservable = (observaber: any) => {
     //   let number = 1;
     //   const time = setInterval(() => {
@@ -100,3 +106,4 @@ export class FormComponent implements OnInit {
     alert(val);
   }
 }
+1814403499;

@@ -1,9 +1,15 @@
-import { Directive, ElementRef, HostListener } from '@angular/core';
+import {
+  Directive,
+  ElementRef,
+  HostListener,
+  HostBinding,
+  OnInit,
+} from '@angular/core';
 
 @Directive({
   selector: '[appHighlight]',
 })
-export class HighlightDirective {
+export class HighlightDirective implements OnInit {
   constructor(private el: ElementRef) {}
 
   @HostListener('mouseenter') onMouseEnter() {
@@ -14,7 +20,15 @@ export class HighlightDirective {
     this.highlight('');
   }
 
-  private highlight(color: string) {
-    this.el.nativeElement.style.backgroundColor = color;
+  @HostBinding('style.color') color!: string;
+
+  ngOnInit(){
+    console.log("自定义指令");
+    
+  }
+  highlight(color: string) {
+    // 两种方法改变dom上的元素
+    // this.el.nativeElement.style.backgroundColor = color;
+    this.color = color;
   }
 }

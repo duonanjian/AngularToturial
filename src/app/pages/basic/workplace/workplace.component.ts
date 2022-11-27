@@ -5,8 +5,9 @@ import {
   ViewChild,
   ElementRef,
 } from '@angular/core';
-import { Router,ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ButtonComponent } from 'src/app/components/button/button.component';
+import { GetIDService } from 'src/service/getID/getID.service';
 @Component({
   selector: 'app-workplace',
   templateUrl: './workplace.component.html',
@@ -15,20 +16,24 @@ import { ButtonComponent } from 'src/app/components/button/button.component';
 export class WorkplaceComponent implements OnInit, AfterViewInit {
   descripe: string = '查看';
   modalisVisible: boolean = false;
-
-  @ViewChild(ButtonComponent, { read: ElementRef, static: true }) chakan!:ElementRef
+  getsetcontent!: string;
+  currentNumber: number = 0;
+  @ViewChild(ButtonComponent, { read: ElementRef, static: true })
+  chakan!: ElementRef;
   // @ViewChild('chakan', { static: true }) chakan:any;
-  constructor(private router: Router,
-    private route: ActivatedRoute,) {}
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private getIDService: GetIDService
+  ) {}
   showModal(val: string) {
-
     this.modalisVisible = true;
     this.descripe = val;
+    this.getsetcontent = String(this.currentNumber++);
   }
-  jump(){
+  jump() {
     // return false
     this.router.navigate(['../monitor'], { relativeTo: this.route });
-
   }
   fatherhandleCancel(val: boolean) {
     console.log(val);
@@ -40,7 +45,7 @@ export class WorkplaceComponent implements OnInit, AfterViewInit {
     this.fatherhandleCancel(val);
   }
   ngOnInit(): void {
-    console.log(this.chakan);
+    console.log(this.getIDService.servID);
   }
   ngAfterViewInit(): void {
     console.log(this.chakan.nativeElement);
