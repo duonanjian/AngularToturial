@@ -23,7 +23,7 @@ export class Monitor implements OnInit, OnChanges, OnDestroy {
   timeID: any;
   secondclass: string = 'secondclass';
   thirdclass: string = 'thirdclass';
-
+  myStyle: any;
   constructor(private store: Store<{ count: number }>) {
     this.count$ = store.select(selectFeatureCount);
     console.log(this.count$);
@@ -52,7 +52,12 @@ export class Monitor implements OnInit, OnChanges, OnDestroy {
     this.store.dispatch(Login({ username: 'test', password: 12345 }));
 
     this.myss = 'zhoufdei';
-    console.log(this.store);
+    console.log(this.myss);
+    this.myStyle = {
+      backgroundColor: 'red',
+    };
+  }
+  ngAfterViewInit() {
     this.timeID = setInterval(() => {
       this.title = new Date();
     }, 1000);
@@ -64,7 +69,6 @@ export class Monitor implements OnInit, OnChanges, OnDestroy {
     this.store.dispatch(Reset());
   }
   ngOnChanges(changes: SimpleChanges): void {}
-  ngAfterViewInit() {}
   ngOnDestroy(): void {
     clearInterval(this.timeID);
   }

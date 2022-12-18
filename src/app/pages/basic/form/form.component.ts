@@ -22,37 +22,7 @@ import moment from 'moment';
 export class FormComponent implements OnInit {
   public autho!: string;
   datarange: any;
-  constructor() {
-    this.autho = '123456';
-  }
-
-  websocketFunction() {
-    const host = 'localhost:8002/';
-    // 创建websocket连接
-    const socket = new WebSocket('ws://' + host);
-    // 如果建立连接
-    socket.onopen = function () {
-      console.log('websocket connect!');
-      var data = JSON.stringify({ equipmentId: '12345' });
-      socket.send(data);
-    };
-    // 监听接收数据
-    socket.onmessage = function (msg) {
-      console.log(msg);
-      console.log('-->', msg.data);
-      try {
-      } catch (error) {
-        console.log('error:', error);
-      }
-    };
-    socket.onclose = function () {
-      console.log('websocket close.');
-    };
-
-    socket.onerror = function () {
-      console.log('websocket error:', event);
-    };
-  }
+  constructor() {}
   async ngOnInit(): Promise<void> {
     const observaber = {
       next: (val: any) => console.log(val),

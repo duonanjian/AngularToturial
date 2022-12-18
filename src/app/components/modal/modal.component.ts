@@ -11,9 +11,10 @@ import {
   AfterViewInit,
   AfterViewChecked,
   OnDestroy,
+  SimpleChanges,
 } from '@angular/core';
 import { GetIDService } from 'src/service/getID/getID.service';
-
+import { BaseService } from 'src/service/testService/baseService';
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
@@ -24,7 +25,7 @@ import { GetIDService } from 'src/service/getID/getID.service';
 // OnChanges,
 // AfterContentChecked,
 // AfterViewChecked,
-export class ModalComponent implements OnInit {
+export class ModalComponent implements OnInit, OnChanges {
   @Input() modalWidth: number = 500;
   @Input() modalisVisible: boolean = false;
   @Input() descripe: string = '查看';
@@ -34,7 +35,10 @@ export class ModalComponent implements OnInit {
   }
   @Output() modalhandleCancel = new EventEmitter<boolean>();
   @Output() modalhandleOk = new EventEmitter<boolean>();
-  constructor(public modalservice: GetIDService) {}
+  constructor(
+    public modalservice: GetIDService,
+    public baseService: BaseService
+  ) {}
   handleCancel(status: boolean) {
     this.modalhandleCancel.emit(status);
   }
@@ -46,9 +50,10 @@ export class ModalComponent implements OnInit {
   }
 
   // 生命周期
-  // ngOnChanges() {
-  //   console.log('弹框组件 ngOnChanges');
-  // }
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes, '弹框组件 ngOnChanges');
+  }
+
   ngOnInit() {
     console.log(this.modalservice.servID);
     console.log('弹框组件 ngOnInit');

@@ -48,6 +48,7 @@
     "@types/node": "^12.11.1",
     "husky": "^8.0.2",
     "jasmine-core": "~4.0.0",
+    "jshint": "^2.13.5",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.1.0",
