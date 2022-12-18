@@ -8,7 +8,8 @@ import {
 } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { Increment, Decrement, Reset } from 'src/store/action';
+import { Login, Increment, Decrement, Reset } from 'src/store/action';
+import { selectFeatureCount } from 'src/store/selector';
 @Component({
   selector: 'app-component-overview',
   templateUrl: './monitor.component.html',
@@ -24,7 +25,8 @@ export class Monitor implements OnInit, OnChanges, OnDestroy {
   thirdclass: string = 'thirdclass';
 
   constructor(private store: Store<{ count: number }>) {
-    this.count$ = store.select('count');
+    this.count$ = store.select(selectFeatureCount);
+    console.log(this.count$);
   }
   ngClassshow(type: number): any {
     switch (type) {
@@ -47,16 +49,22 @@ export class Monitor implements OnInit, OnChanges, OnDestroy {
 
   ngOnInit() {
     this.store.dispatch(Increment());
-    console.log(this.title);
+    this.store.dispatch(Login({ username: 'test', password: 12345 }));
+
     this.myss = 'zhoufdei';
-    console.log(this.myss);
-  }
-  ngOnChanges(changes: SimpleChanges): void {}
-  ngAfterViewInit() {
+    console.log(this.store);
     this.timeID = setInterval(() => {
       this.title = new Date();
     }, 1000);
   }
+  DecrementCount() {
+    this.store.dispatch(Decrement());
+  }
+  ResetCount() {
+    this.store.dispatch(Reset());
+  }
+  ngOnChanges(changes: SimpleChanges): void {}
+  ngAfterViewInit() {}
   ngOnDestroy(): void {
     clearInterval(this.timeID);
   }

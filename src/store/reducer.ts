@@ -1,18 +1,19 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import { ActionTypes } from './action';
-
-export const initialState = 0;
-
-
-export function conterReducer(state = initialState, action: Action) {
-  switch (action.type) {
-    case ActionTypes.Increment:
-      return state + 10;
-    case ActionTypes.Decrement:
-      return state - 1;
-    case ActionTypes.Reset:
-      return 0;
-    default:
-      return state;
-  }
+import * as Actions from './action';
+export const stateKey = 'State';
+export interface State {
+  count: number;
+  login: any;
 }
+export const initialState: State = {
+  count: 0,
+  login: {},
+};
+
+export const reducer = createReducer(
+  initialState,
+  on(Actions.Increment, (state) => ({ ...state, count: state.count + 10 })),
+  on(Actions.Decrement, (state) => ({ ...state, count: state.count - 5 })),
+  on(Actions.Reset, (state) => ({ ...state, count: 0 })),
+  on(Actions.Login, (state, login) => ({ ...state, login: login }))
+);

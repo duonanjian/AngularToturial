@@ -1,8 +1,8 @@
 {
-  "name": "my-app",
-  "version": "0.0.0",
+  "name": "angular-demo",
+  "version": "1.0.0",
   "scripts": {
-    "start": "ng serve --open --port",
+    "start": "ng serve --open --port 4100",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -29,6 +29,7 @@
     "@angular/platform-browser": "~13.3.0",
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
+    "@ngrx/effects": "^13.2.0",
     "@ngrx/store": "^13.2.0",
     "angular2-uuid": "^1.1.1",
     "fabric": "^5.2.1",

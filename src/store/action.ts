@@ -1,7 +1,4 @@
-import { Action, createAction } from '@ngrx/store';
-
-export const decrement = createAction('[Counter Component] Decrement');
-export const reset = createAction('[Counter Component] Reset');
+import { Action, createAction, props } from '@ngrx/store';
 
 export enum ActionTypes {
   Increment = '[Counter Component] Increment',
@@ -9,11 +6,9 @@ export enum ActionTypes {
   Reset = '[Counter Component] Reset',
 }
 export const Increment = createAction(ActionTypes.Increment);
-
-export class Decrement implements Action {
-  readonly type = ActionTypes.Decrement;
-}
-
-export class Reset implements Action {
-  readonly type = ActionTypes.Reset;
-}
+export const Decrement = createAction('[Counter Component] Decrement');
+export const Reset = createAction('[Counter Component] Reset');
+export const Login = createAction(
+  '[Login Page] Login',
+  props<{ username: string; password: number }>()
+);
