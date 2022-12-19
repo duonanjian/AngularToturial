@@ -6,6 +6,8 @@ import { CookieService } from 'ngx-cookie-service';
 import { ApiService } from 'src/service/api/api.service';
 import { StoreService } from 'src/service/store/store.service';
 import { dataHttpService } from 'src/service/api/data-http';
+import { Login } from 'src/store/action';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'login',
@@ -14,9 +16,11 @@ import { dataHttpService } from 'src/service/api/data-http';
 })
 export class LoginComponent implements OnInit {
   validateForm!: FormGroup;
+
   private loginURL =
     'https://mock.mengxuegu.com/mock/6188fda74c5d9932f7e75822/duonanjian/login';
   constructor(
+    private store: Store,
     private fb: FormBuilder,
     private router: Router,
     // private RouteConfigLoadStart: RouteConfigLoadStart,
@@ -28,7 +32,7 @@ export class LoginComponent implements OnInit {
   ) {}
   // 初始化赋值
   ngOnInit(): void {
-    console.log(this.router.events, );
+    console.log(this.router.events);
     // fetch请求本地json
     fetch('assets/mock/login.json')
       .then((res) => res.json())
@@ -45,6 +49,7 @@ export class LoginComponent implements OnInit {
   submitForm(): void {
     let whiteList = [true, 'true'];
     if (this.validateForm.valid) {
+      this.store.dispatch(Login({ username: 'admin', password: 123456 }));
       // dataHttpService封装
       this.dataHttpService
         .getDataService('login', this.validateForm.value)

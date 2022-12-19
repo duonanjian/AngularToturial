@@ -13,7 +13,7 @@ export class WelcomeComponent implements OnInit, OnChanges {
   isCollapsed = false;
   visible = false;
   userinfo: UserInfo;
-  class! :true
+  class!: true;
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -23,10 +23,11 @@ export class WelcomeComponent implements OnInit, OnChanges {
     // path 不加 ‘.’ http://localhost:51645/form
     // path 加 ‘.’ http://localhost:51645/weicome/form
     this.menulist = [
-      { name: '监视', path: './basic/monitor' },
+      { name: '监视-Redux', path: './basic/monitor' },
       { name: '工作区', path: '/basic/workplace' },
       { name: '表单', path: '/basic/form' },
       { name: '表格', path: '/basic/table' },
+      { name: '样式', path: '/basic/style' },
     ];
     this.userinfo = {
       username: 'admin',
@@ -45,16 +46,7 @@ export class WelcomeComponent implements OnInit, OnChanges {
     console.log(value);
   }
   ngOnChanges(changes: SimpleChanges): void {
-    setTimeout(() => {
-      const nodelist = document.querySelectorAll('.ant-breadcrumb-link > a');
-      nodelist.forEach((item) => {
-        (item as HTMLElement).onclick = (a: any) => {
-          console.log(a);
-          return false;
-        };
-      });
-      console.log(nodelist);
-    }, 1000);
+    console.log(changes);
   }
   ngOnInit(): void {
     this.router.events.subscribe((event) => {
@@ -62,7 +54,6 @@ export class WelcomeComponent implements OnInit, OnChanges {
       nodelist.forEach((item) => {
         (item as HTMLElement).style.pointerEvents = 'none';
       });
-      console.log(nodelist);
     });
   }
   breadcrumbclick() {
