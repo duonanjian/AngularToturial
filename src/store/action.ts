@@ -1,19 +1,14 @@
-import { Action, createAction } from '@ngrx/store';
+import { createAction } from '@ngrx/store';
 
-export const decrement = createAction('[Counter Component] Decrement');
-export const reset = createAction('[Counter Component] Reset');
-
+// 定义行为类别
 export enum ActionTypes {
   Increment = '[Counter Component] Increment',
   Decrement = '[Counter Component] Decrement',
   Reset = '[Counter Component] Reset',
 }
 export const Increment = createAction(ActionTypes.Increment);
+export const Decrement = createAction(ActionTypes.Decrement);
+export const Reset = createAction(ActionTypes.Reset);
 
-export class Decrement implements Action {
-  readonly type = ActionTypes.Decrement;
-}
 
-export class Reset implements Action {
-  readonly type = ActionTypes.Reset;
-}
+

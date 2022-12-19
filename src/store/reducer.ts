@@ -1,18 +1,18 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import { ActionTypes } from './action';
+import { count } from 'console';
+import * as ActionTypes from './action';
+import { StoreType } from './store';
+// 定义该数据在Store中的键名
+export const StoreKey = 'store'
+export const initialState: StoreType = { count: 80 };
 
-export const initialState = 0;
+export const reducer = createReducer(
+  initialState,
+
+  on(ActionTypes.Increment, state => {...state,count + 10}),
+  on(ActionTypes.Decrement, (state, action) => state),
+  on(ActionTypes.Reset, (state, action) => state),
+
+);
 
 
-export function conterReducer(state = initialState, action: Action) {
-  switch (action.type) {
-    case ActionTypes.Increment:
-      return state + 10;
-    case ActionTypes.Decrement:
-      return state - 1;
-    case ActionTypes.Reset:
-      return 0;
-    default:
-      return state;
-  }
-}

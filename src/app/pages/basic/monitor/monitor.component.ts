@@ -22,9 +22,15 @@ export class Monitor implements OnInit, OnChanges, OnDestroy {
   timeID: any;
   secondclass: string = 'secondclass';
   thirdclass: string = 'thirdclass';
-  myStyle:any
+  myStyle: any
   constructor(private store: Store<{ count: number }>) {
-    this.count$ = store.select('count');
+    // @ts-ignore
+    store.select('store').subscribe(value=>{
+      console.log(value);
+      
+    });
+    console.log(store);
+
   }
   ngClassshow(type: number): any {
     switch (type) {
@@ -47,14 +53,18 @@ export class Monitor implements OnInit, OnChanges, OnDestroy {
 
   ngOnInit() {
     this.store.dispatch(Increment());
-    console.log(this.title);
+    console.log(this.title, this.store, 'this.store');
     this.myss = 'zhoufdei';
     console.log(this.myss);
     this.myStyle = {
-      backgroundColor:'red'
+      backgroundColor: 'red'
     }
   }
-  ngOnChanges(changes: SimpleChanges): void {}
+  storeDispatch() {
+    this.store.dispatch(Increment());
+
+  }
+  ngOnChanges(changes: SimpleChanges): void { }
   ngAfterViewInit() {
     this.timeID = setInterval(() => {
       this.title = new Date();

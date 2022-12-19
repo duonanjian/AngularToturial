@@ -62,7 +62,7 @@ export class WelcomeComponent implements OnInit, OnChanges {
       nodelist.forEach((item) => {
         (item as HTMLElement).style.pointerEvents = 'none';
       });
-      console.log(nodelist);
+      // console.log(nodelist);
     });
   }
   breadcrumbclick() {

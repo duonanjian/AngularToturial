@@ -19,7 +19,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { ApiService } from 'src/service/api/api.service';
 import { dataHttpService } from 'src/service/api/data-http';
 import { StoreModule } from '@ngrx/store';
-import { conterReducer } from 'src/store/reducer';
+import { StoreKey, reducer } from 'src/store/reducer';
 import { RouteConfigLoadStart } from '@angular/router';
 @NgModule({
   declarations: [AppComponent, LoginComponent],
@@ -34,7 +34,7 @@ import { RouteConfigLoadStart } from '@angular/router';
     // welcome组件相关
     WelcomeModule,
     AppRoutingModule,
-    StoreModule.forRoot({ count: conterReducer })
+    StoreModule.forRoot({ [StoreKey]: reducer }, {})
   ],
   providers: [
     AuthGuard,
@@ -46,4 +46,4 @@ import { RouteConfigLoadStart } from '@angular/router';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

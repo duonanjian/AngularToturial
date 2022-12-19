@@ -1,2 +1,8 @@
-<app-button id="button" (ButtonEvent)="buttonshow($event)">测试</app-button>
-<p appHighlight>{{title}}</p>
+<app-button id="button" (ButtonEvent)="buttonshow()">测试</app-button>
+<p appHighlight>{{ title }}</p>
+<app-template>
+    <ng-container ngProjectAs="app-content-child">
+        <div>444444</div>
+    </ng-container>
+</app-template>
+<ng-template appHighlight> 888888 </ng-template>

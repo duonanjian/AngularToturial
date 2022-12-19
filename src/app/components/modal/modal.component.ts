@@ -11,7 +11,8 @@ import {
   AfterViewInit,
   AfterViewChecked,
   OnDestroy,
-  SimpleChanges
+  SimpleChanges,
+  TemplateRef
 } from '@angular/core';
 import { GetIDService } from 'src/service/getID/getID.service';
 import { BaseService } from 'src/service/testService/baseService';
@@ -25,11 +26,17 @@ import { BaseService } from 'src/service/testService/baseService';
 // AfterContentChecked,
 // AfterViewChecked,
 export class ModalComponent implements OnInit, OnChanges {
+  @Input() outsidelogo!: TemplateRef<any>
   @Input() modalWidth: number = 500;
   @Input() modalisVisible: boolean = false;
   @Input() descripe: string = '查看';
   @Output() modalhandleCancel = new EventEmitter<boolean>();
   @Output() modalhandleOk = new EventEmitter<boolean>();
+  @Input()
+  set add(value: any) {
+    console.log(value,'value');
+
+  }
   constructor(public modalservice: GetIDService, public baseService: BaseService) {
 
   }

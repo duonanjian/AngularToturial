@@ -25,13 +25,23 @@
 >
   局部变量传值
 </app-button>
+
+<!-- 父组件 -->
 <app-modal
   (modalhandleCancel)="fatherhandleCancel($event)"
   (modalhandleOk)="fatherhandleOk($event)"
   [modalisVisible]="modalisVisible"
   [descripe]="descripe"
+  [outsidelogo]="outsidelogo"
+  [add]="descripe"
   #modal
 >
+<div>
+  <span>测试的距离</span>
+</div>
 </app-modal>
 
-<a href="/canvas"  (click)="jump()">跳到幕布</a>
+
+<ng-template #outsidelogo>
+  <div>this is my logo ---------------------</div>
+</ng-template>
