@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { dataHttpService } from 'src/service/api/data-http';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import moment from 'moment';
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
@@ -14,7 +15,8 @@ export class TableComponent implements OnInit {
   modalisVisible: boolean = false;
   listOfData: any;
   lookonly: boolean = false;
-
+  datarange: any;
+  newDate:any
   constructor(
     private dataHttpService: dataHttpService,
     private fb: FormBuilder
@@ -79,5 +81,14 @@ export class TableComponent implements OnInit {
   }
   resetForm(): void {
     this.validateForm.reset();
+  }
+  onChange(val: any) {
+    const diff = moment(val[1]).diff(val[0]);
+    const first = new Date(val[0]).getTime() - diff;
+    this.newDate = [new Date(first), val[0]];
+    console.log(moment(new Date(first)).format('YYYY-MM-DD HH:mm:ss'));
+  }
+  changedata(){
+    this.datarange = this.newDate
   }
 }

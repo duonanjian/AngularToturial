@@ -1,4 +1,4 @@
-import { createAction } from '@ngrx/store';
+import { Action, createAction, props } from '@ngrx/store';
 
 // 定义行为类别
 export enum ActionTypes {
@@ -7,8 +7,9 @@ export enum ActionTypes {
   Reset = '[Counter Component] Reset',
 }
 export const Increment = createAction(ActionTypes.Increment);
-export const Decrement = createAction(ActionTypes.Decrement);
-export const Reset = createAction(ActionTypes.Reset);
-
-
-
+export const Decrement = createAction('[Counter Component] Decrement');
+export const Reset = createAction('[Counter Component] Reset');
+export const Login = createAction(
+  '[Login Page] Login',
+  props<{ username: string; password: number }>()
+);

@@ -75,3 +75,11 @@
     </div>
   </form>
 </app-modal>
+
+<nz-range-picker
+      nzShowTime
+      nzFormat="yyyy/MM/dd HH:mm:ss"
+      [(ngModel)]='datarange'
+      (ngModelChange)="onChange($event)"
+    ></nz-range-picker>
+<button (click)="changedata()"></button>

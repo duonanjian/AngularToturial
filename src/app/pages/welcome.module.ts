@@ -27,9 +27,13 @@ const routes: Routes = [
         loadChildren: () =>
           import('./basic/basic.module').then((m) => m.BasicModule),
       },
-      { path: 'canvas', component: CanvasComponent,data: {
-        breadcrumb: 'Display Name'
-      } },
+      {
+        path: 'canvas',
+        component: CanvasComponent,
+        data: {
+          breadcrumb: 'Display Name',
+        },
+      },
     ],
     canActivateChild: [AuthGuard],
     canActivate: [AuthGuard],
@@ -47,6 +51,4 @@ const routes: Routes = [
   declarations: [WelcomeComponent, CanvasComponent],
   exports: [WelcomeComponent],
 })
-export class WelcomeModule {
-  
-}
+export class WelcomeModule {}

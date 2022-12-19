@@ -19,7 +19,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { ApiService } from 'src/service/api/api.service';
 import { dataHttpService } from 'src/service/api/data-http';
 import { StoreModule } from '@ngrx/store';
-import { StoreKey, reducer } from 'src/store/reducer';
+import { stateKey, reducer } from 'src/store/reducer';
 import { RouteConfigLoadStart } from '@angular/router';
 @NgModule({
   declarations: [AppComponent, LoginComponent],
@@ -34,7 +34,7 @@ import { RouteConfigLoadStart } from '@angular/router';
     // welcome组件相关
     WelcomeModule,
     AppRoutingModule,
-    StoreModule.forRoot({ [StoreKey]: reducer }, {})
+    StoreModule.forRoot({ [stateKey]: reducer }),
   ],
   providers: [
     AuthGuard,

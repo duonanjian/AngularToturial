@@ -4,16 +4,17 @@ import { WorkplaceComponent } from './workplace/workplace.component';
 import { TableComponent } from './table/table.component';
 import { FormComponent } from './form/form.component';
 import { BasicComponent } from './basic.component';
+import { StyleComponent } from './style/style.component';
 const routes: Routes = [
   {
     path: '',
     component: BasicComponent,
     children: [
-      // {
-      //   path: '',
-      //   redirectTo: 'monitor',
-      //   pathMatch: 'full',
-      // },
+      {
+        path: '',
+        redirectTo: 'monitor',
+        pathMatch: 'full',
+      },
       {
         path: 'monitor',
         component: Monitor,
@@ -21,9 +22,20 @@ const routes: Routes = [
           breadcrumb: 'monitor',
         },
       },
-      { path: 'workplace', component: WorkplaceComponent , data: {
-        breadcrumb: 'workplace',
-      },},
+      {
+        path: 'workplace',
+        component: WorkplaceComponent,
+        data: {
+          breadcrumb: 'workplace',
+        },
+      },
+      {
+        path: 'style',
+        component: StyleComponent,
+        data: {
+          breadcrumb: 'style',
+        },
+      },
       { path: 'form', component: FormComponent },
       { path: 'table', component: TableComponent },
     ],

@@ -12,7 +12,6 @@ import {
   AfterViewChecked,
   OnDestroy,
   SimpleChanges,
-  TemplateRef
 } from '@angular/core';
 import { GetIDService } from 'src/service/getID/getID.service';
 import { BaseService } from 'src/service/testService/baseService';
@@ -20,6 +19,7 @@ import { BaseService } from 'src/service/testService/baseService';
   selector: 'app-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.less'],
+  providers: [GetIDService],
 })
 // DoCheck,
 // OnChanges,
@@ -30,16 +30,16 @@ export class ModalComponent implements OnInit, OnChanges {
   @Input() modalWidth: number = 500;
   @Input() modalisVisible: boolean = false;
   @Input() descripe: string = '查看';
+  @Input()
+  set getsetcontent(val: any) {
+    console.log(val, 'setset');
+  }
   @Output() modalhandleCancel = new EventEmitter<boolean>();
   @Output() modalhandleOk = new EventEmitter<boolean>();
-  @Input()
-  set add(value: any) {
-    console.log(value,'value');
-
-  }
-  constructor(public modalservice: GetIDService, public baseService: BaseService) {
-
-  }
+  constructor(
+    public modalservice: GetIDService,
+    public baseService: BaseService
+  ) { }
   handleCancel(status: boolean) {
     this.modalhandleCancel.emit(status);
   }
@@ -56,7 +56,8 @@ export class ModalComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    console.log('弹框组件 ngOnInit', this.baseService.a);
+    console.log(this.modalservice.servID);
+    console.log('弹框组件 ngOnInit');
   }
   // ngDoCheck() {
   //   console.log('弹框组件 ngDoCheck');

@@ -38,7 +38,9 @@
             "styles": [
               "src/styles.less"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/moment/min/moment.min.js"
+            ]
           },
           "configurations": {
             "production": {

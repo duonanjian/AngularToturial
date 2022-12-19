@@ -31,6 +31,7 @@
   (modalhandleCancel)="fatherhandleCancel($event)"
   (modalhandleOk)="fatherhandleOk($event)"
   [modalisVisible]="modalisVisible"
+  [getsetcontent]="getsetcontent"
   [descripe]="descripe"
   [outsidelogo]="outsidelogo"
   [add]="descripe"
@@ -41,7 +42,4 @@
 </div>
 </app-modal>
 
-
-<ng-template #outsidelogo>
-  <div>this is my logo ---------------------</div>
-</ng-template>
+<a href="/canvas" (click)="jump()">跳到幕布</a>
