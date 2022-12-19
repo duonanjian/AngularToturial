@@ -14,6 +14,7 @@ import {
 import { of, interval } from 'rxjs';
 import { filter, map, take } from 'rxjs/operators';
 import moment from 'moment';
+import { DestroySubjectService } from 'src/service';
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -76,22 +77,22 @@ export class FormComponent implements OnInit {
   buttonshow(val: any) {
     alert(val);
   }
-  buttonshow() {
-    this.storeService.execute()
-  }
+  // buttonshow() {
+  //   this.storeService.execute()
+  // }
 
   //@ts-ignore
-  changeLastData(num: number) {
-    const last = this.adf.slice(-1)[0]
-    console.log('00');
+  // changeLastData(num: number) {
+  //   const last = this.adf.slice(-1)[0]
+  //   console.log('00');
 
-    if (num - last < 2) {
+  //   if (num - last < 2) {
 
-      return this.adf
-    }
-    this.adf.push(last + 2)
-    return this.changeLastData(num)
-  }
+  //     return this.adf
+  //   }
+  //   this.adf.push(last + 2)
+  //   return this.changeLastData(num)
+  // }
 
 
 }

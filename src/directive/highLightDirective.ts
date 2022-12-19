@@ -12,10 +12,7 @@ import {
 export class HighlightDirective implements OnInit {
   constructor(private el: ElementRef) { }
 
-  ngOnInit(): void {
-    console.log("init");
-
-  }
+ 
   @HostListener('mouseenter') onMouseEnter() {
     this.highlight('yellow');
   }

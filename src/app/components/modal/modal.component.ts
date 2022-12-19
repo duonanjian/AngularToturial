@@ -12,6 +12,7 @@ import {
   AfterViewChecked,
   OnDestroy,
   SimpleChanges,
+  TemplateRef
 } from '@angular/core';
 import { GetIDService } from 'src/service/getID/getID.service';
 import { BaseService } from 'src/service/testService/baseService';

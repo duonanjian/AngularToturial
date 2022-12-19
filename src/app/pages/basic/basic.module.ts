@@ -11,16 +11,7 @@ import { NgZorroAntdModule } from 'src/ant-design-source/ng-zorro-antd.module';
 import { HighlightDirective } from 'src/directive/highLightDirective';
 import { BasicRoutes } from './basic.routing';
 @NgModule({
-  imports: [
-    BasicRoutes,
-    CommonModule,
-    NgZorroAntdModule,
-    ComponentsModule,
-    MonitorModule,
-    WorkplaceModule,
-    TableModule,
-    StyleModule,
-  ],
-  declarations: [BasicComponent, FormComponent, HighlightDirective],
+    imports: [BasicRoutes, CommonModule, NgZorroAntdModule, ComponentsModule, MonitorModule, WorkplaceModule, TableModule, StyleModule],
+    declarations: [BasicComponent, FormComponent, HighlightDirective]
 })
 export class BasicModule {}
