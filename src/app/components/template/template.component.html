@@ -1,5 +1,5 @@
-<p>
-  template works!
-</p>
+<p>template works!</p>
 
 <ng-content select="app-content-child"></ng-content>
+
+<input type="text" [(ngModel)]="namecopy" (input)="nameChange.emit(namecopy)" />

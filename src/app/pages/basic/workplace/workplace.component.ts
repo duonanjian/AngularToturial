@@ -18,6 +18,7 @@ export class WorkplaceComponent implements OnInit, AfterViewInit {
   modalisVisible: boolean = false;
   getsetcontent!: string;
   currentNumber: number = 0;
+  name = 'Mike'
   @ViewChild(ButtonComponent, { read: ElementRef, static: true })
   chakan!: ElementRef;
   // @ViewChild('chakan', { static: true }) chakan:any;

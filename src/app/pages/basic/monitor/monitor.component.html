@@ -1,4 +1,9 @@
-<div>Current Count: {{ count$ | async }}</div>
+<div [style.--fontColor]="fontColor">
+    Current Count:
+    <span class="value">
+        {{ count$ | async }}
+    </span>
+</div>
 
 <button (click)="IncrementCount()">增加 State count数据</button>
 <button (click)="DecrementCount()">减少 State count数据</button>

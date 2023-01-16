@@ -1,75 +1,49 @@
-import {
-  Component,
-  Input,
-  OnInit,
-  OnChanges,
-  SimpleChanges,
-  OnDestroy,
-} from '@angular/core';
-import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { Login, Increment, Decrement, Reset } from 'src/store/action';
-import { selectFeatureCount } from 'src/store/selector';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import moment from 'moment';
 @Component({
-  selector: 'app-style',
-  templateUrl: './style.component.html',
-  styleUrls: ['./style.component.less'],
+    selector: 'app-style',
+    templateUrl: './style.component.html',
+    styleUrls: ['./style.component.less']
 })
-export class StyleComponent implements OnInit {
-  count$: Observable<number>;
-  title: any = 'overviewtitle';
-  styleset: any = 'color:green';
-  styleset2: any = 'font-size:40px';
-  timeID: any;
-  secondclass: string = 'secondclass';
-  thirdclass: string = 'thirdclass';
-  myStyle: any;
-  constructor(private store: Store<{ count: number }>) {
-    this.count$ = store.select(selectFeatureCount);
-    console.log(this.count$);
-  }
-  ngClassshow(type: number): any {
-    switch (type) {
-      case 1:
-        return 'ng-fisrt ng-second';
-        break;
-      case 2:
-        return ['ng-first', 'ng-second'];
-        break;
-      case 3:
-        return { 'ng-first': true, 'ng-second': false };
-        break;
+export class StyleComponent implements OnInit, OnDestroy {
+    title: any = 'overviewtitle';
+    styleset: any = 'color:green';
+    styleset2: any = 'font-size:40px';
+    timeID: any;
+    secondclass: string = 'secondclass';
+    thirdclass: string = 'thirdclass';
+    myStyle: any;
+    list = [1, 2, 3, 4];
+    constructor() {}
+
+    ngOnInit() {
+        this.myStyle = {
+            backgroundColor: 'red'
+        };
+        const data = Array(4).fill('4').map(()=> 1)
+        this.list.push(...[1,67])
+        console.log(this.list,data);
+        
     }
-  }
-
-  private myss: any = 'private';
-  list = [1, 2, 3, 4];
-
-  @Input() myname: any = '';
-
-  ngOnInit() {
-    this.store.dispatch(Increment());
-    this.store.dispatch(Login({ username: 'test', password: 12345 }));
-
-    this.myss = 'zhoufdei';
-    console.log(this.myss);
-    this.myStyle = {
-      backgroundColor: 'red',
-    };
-  }
-  ngAfterViewInit() {
-    this.timeID = setInterval(() => {
-      this.title = new Date();
-    }, 1000);
-  }
-  DecrementCount() {
-    this.store.dispatch(Decrement());
-  }
-  ResetCount() {
-    this.store.dispatch(Reset());
-  }
-  ngOnChanges(changes: SimpleChanges): void {}
-  ngOnDestroy(): void {
-    clearInterval(this.timeID);
-  }
+    ngAfterViewInit() {
+        this.timeID = setInterval(() => {
+            this.title = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
+        }, 1000);
+    }
+    ngOnDestroy(): void {
+        if (this.timeID) clearInterval(this.timeID);
+    }
+    ngClassshow(type: number): any {
+        switch (type) {
+            case 1:
+                return 'ng-fisrt ng-second';
+                break;
+            case 2:
+                return ['ng-first', 'ng-second'];
+                break;
+            case 3:
+                return { 'ng-first': true, 'ng-second': false };
+                break;
+        }
+    }
 }

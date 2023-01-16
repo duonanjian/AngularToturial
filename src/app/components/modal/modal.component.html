@@ -1,14 +1,10 @@
-<nz-modal
-  [nzWidth]="modalWidth"
-  [(nzVisible)]="modalisVisible"
-  [nzTitle]="descripe"
-  (nzOnCancel)="handleCancel(false)"
-  (nzOnOk)="handleOk(false)"
->
-  <div>
-    <!-- <ng-container *nzModalContent> -->
-    <ng-content *nzModalContent>
-      
-    </ng-content>
-  </div>
+<nz-modal [nzWidth]="modalWidth" [(nzVisible)]="modalisVisible" [nzTitle]="descripe" (nzOnCancel)="handleCancel(false)" (nzOnOk)="handleOk(false)">
+    <ng-container *nzModalContent>
+        <ng-container *ngTemplateOutlet="modal"></ng-container>
+    </ng-container>
+    <!-- <ng-content *nzModalContent> </ng-content> -->
 </nz-modal>
+
+<ng-template #modal>
+    <div>这是ng-modal</div>
+</ng-template>

@@ -12,3 +12,8 @@ export const selectFeatureCount = createSelector(
   selectFeature,
   (state: State) => state.count
 );
+
+export const selectFeatureStatusList = createSelector(
+  selectFeature,
+  (state: State) => state.statusList
+);
