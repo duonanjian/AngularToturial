@@ -1,10 +1,12 @@
 <nz-modal [nzWidth]="modalWidth" [(nzVisible)]="modalisVisible" [nzTitle]="descripe" (nzOnCancel)="handleCancel(false)" (nzOnOk)="handleOk(false)">
     <ng-container *nzModalContent>
-        <ng-container *ngTemplateOutlet="modal"></ng-container>
+        <ng-container *ngTemplateOutlet="modal; context: { $implicit: { value: '默认$implicit' }, another: { value: 'ngTemplateOutlet传参' } }"></ng-container>
     </ng-container>
     <!-- <ng-content *nzModalContent> </ng-content> -->
 </nz-modal>
 
-<ng-template #modal>
+<ng-template #modal let-data let-another="another">
     <div>这是ng-modal</div>
+    <div>{{ data | json }}</div>
+    <div>{{ another | json }}</div>
 </ng-template>

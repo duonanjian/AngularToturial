@@ -1,3 +1,14 @@
-<p appHighlight>{{autho}}</p>
+<p appHighlight #appHighlight="appHighlight">{{data | json}}</p>
 <app-button id="button" (ButtonEvent)="buttonshow($event)">测试流</app-button>
-<div id="top">rrrrrrrrrrrrrrr</div>
+<div id="top">{{data.path}}</div>
+
+<ng-template appCarouselPage>
+    Page 1
+  </ng-template>
+  <ng-template appCarouselPage>
+    Page 2
+  </ng-template>
+  <ng-template appCarouselPage>
+    Page 3
+  </ng-template>
+  <div *ngTemplateOutlet="displayPage"></div>
