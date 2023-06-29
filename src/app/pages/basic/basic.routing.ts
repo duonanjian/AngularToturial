@@ -5,6 +5,8 @@ import { TableComponent } from './table/table.component';
 import { FormComponent } from './form/form.component';
 import { BasicComponent } from './basic.component';
 import { StyleComponent } from './style/style.component';
+import { ChangeDetectionComponent } from './changeDetection/changeDetection.component';
+
 const routes: Routes = [
     {
         path: '',
@@ -37,7 +39,8 @@ const routes: Routes = [
                 }
             },
             { path: 'form', component: FormComponent },
-            { path: 'table', component: TableComponent }
+            { path: 'table', component: TableComponent },
+            { path: 'changedetection', component: ChangeDetectionComponent }
         ]
     }
 ];
