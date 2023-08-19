@@ -1,8 +1,8 @@
-FROM node:16
-WORKDIR /docker-start
-COPY . .
-RUN npm install 
-# EXPOSE  8080
+# 使用一个现有的 Node.js 映像作为基础映像
+FROM node:latest
 
-CMD ["npm","run","start"]
+# 更新 apt-get 并安装 Git
+RUN apt-get update && apt-get install -y git
 
+# 安装 TypeScript
+RUN npm install -g typescript

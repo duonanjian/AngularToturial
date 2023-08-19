@@ -33,6 +33,7 @@
     "@ngrx/store": "^13.2.0",
     "angular2-uuid": "^1.1.1",
     "fabric": "^5.2.1",
+    "guid-typescript": "^1.0.9",
     "moment": "^2.29.4",
     "ng-zorro-antd": "^13.2.1",
     "ngx-cookie-service": "^13.2.0",

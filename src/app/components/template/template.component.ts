@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-
+import { getGlobalVariable } from 'src/utils/same-time-promise';
 @Component({
     selector: 'app-template',
     templateUrl: './template.component.html',
@@ -14,5 +14,14 @@ export class TemplateComponent implements OnInit {
 
     constructor() {}
 
-    ngOnInit() {}
+    ngOnInit() {
+        this.getVariable()
+    }
+
+    async getVariable() {
+    console.log('templete');
+
+        const data = await getGlobalVariable();
+        console.log(data,'templete');
+    }
 }

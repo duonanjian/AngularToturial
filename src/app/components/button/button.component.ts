@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { GetIDService } from 'src/service/getID/getID.service';
+import { getGlobalVariable } from 'src/utils/same-time-promise';
 
 @Component({
   selector: 'app-button',
@@ -16,8 +17,17 @@ export class ButtonComponent implements OnInit {
   constructor(private getIDService: GetIDService) { }
   ngOnInit() {
     console.log(this.getIDService, 'button this.getIDService');
+    this.getVariable()
   }
   ButtonClick() {
     this.ButtonEvent.emit('this is button emit');
   }
+  async getVariable() {
+    console.log('button');
+
+    const data = await getGlobalVariable();
+    if(data){
+      console.log(data,'button');
+    }
+}
 }

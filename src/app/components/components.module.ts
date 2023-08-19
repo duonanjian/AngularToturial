@@ -11,10 +11,11 @@ import { TemplateComponent } from './template/template.component';
 import { GetIDService } from 'src/service/getID/getID.service';
 import { BaseService } from 'src/service/testService/baseService';
 import { UserService } from 'src/service/testService/userService';
+import { FloatingWindowComponent } from './floating-window/floating-window.component';
 @NgModule({
     imports: [CommonModule, NgZorroAntdModule, FormsModule, ReactiveFormsModule],
-    declarations: [ButtonComponent, ModalComponent, TemplateComponent],
-    exports: [ButtonComponent, ModalComponent, TemplateComponent],
+    declarations: [ButtonComponent, ModalComponent, TemplateComponent, FloatingWindowComponent],
+    exports: [ButtonComponent, ModalComponent, TemplateComponent, FloatingWindowComponent],
     providers: [GetIDService, { provide: BaseService, useClass: UserService }]
 })
 export class ComponentsModule {}

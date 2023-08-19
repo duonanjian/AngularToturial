@@ -8,3 +8,28 @@
 <button (click)="IncrementCount()">增加 State count数据</button>
 <button (click)="DecrementCount()">减少 State count数据</button>
 <button (click)="ResetCount()">重置 State count数据</button>
+
+<div>
+  <nz-tabset cdkDropList #todoList="cdkDropList" [cdkDropListData]="tabs" [cdkDropListConnectedTo]="[doneList]" cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)" (cdkDropListExited)="drg($event)" (cdkDropListSorted)="drg($event)" (cdkDropListEntered)="drg($event)">
+    <nz-tab *ngFor="let tab of tabs" [nzTitle]="titleTemplate">
+      <ng-template #titleTemplate>
+        <div cdkDrag (cdkDragStarted)="drg($event)">
+          <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+          {{ tab.name }}
+        </div>
+      </ng-template>
+      {{tab.name}}
+    </nz-tab>
+  </nz-tabset>
+  <nz-tabset cdkDropList #doneList="cdkDropList" [cdkDropListData]="tabss" [cdkDropListConnectedTo]="[todoList]" cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)" (cdkDropListExited)="drg($event)" (cdkDropListSorted)="drg($event)" (cdkDropListEntered)="drg($event)">
+    <nz-tab *ngFor="let tab of tabss" [nzTitle]="titleTemplate">
+      <ng-template #titleTemplate>
+        <div cdkDrag (cdkDragStarted)="drg($event)">
+          <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+          {{ tab.name }}
+        </div>
+      </ng-template>
+      {{tab.name}}
+    </nz-tab>
+  </nz-tabset>
+</div>

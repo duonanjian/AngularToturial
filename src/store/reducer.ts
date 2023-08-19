@@ -1,11 +1,9 @@
-import { Action, createReducer, on } from '@ngrx/store';
+import {  createReducer, on } from '@ngrx/store';
+import State from './store'
 import * as Actions from './action';
+
 export const stateKey = 'State';
-export interface State {
-    count: number;
-    login: any;
-    statusList: Array<any>;
-}
+
 export const initialState: State = {
     count: 0,
     login: {},

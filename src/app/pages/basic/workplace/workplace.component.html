@@ -1,8 +1,8 @@
-<app-button #chakan nz-button nzType="primary" ButtonDescripe="查看" (ButtonEvent)="showModal('查看')"> 查看 </app-button>
+<!-- <app-button #chakan nz-button nzType="primary" ButtonDescripe="查看" (ButtonEvent)="showModal('查看')"> 查看 </app-button> -->
 
-<app-button nz-button nzType="primary" ButtonDescripe="修改" (ButtonEvent)="showModal('修改')"> 修改 </app-button>
+<!-- <app-button nz-button nzType="primary" ButtonDescripe="修改" (ButtonEvent)="showModal('修改')"> 修改 </app-button> -->
 
-<app-button nz-button nzType="primary" ButtonDescripe="局部变量传值" (ButtonEvent)="modal.passvalue()"> 局部变量传值 </app-button>
+<app-button nz-button nzType="primary" ButtonDescripe="局部变量传值" (ButtonEvent)="modal.passvalue();change();"> 局部变量传值 </app-button>
 
 <!-- 父组件 -->
 <app-modal
@@ -21,4 +21,9 @@
 <!-- <app-template [name]="name" (nameChange)="name = $event"></app-template> -->
 <!-- 在 Angular 中，當有一個名為 xxx 的 @Input 時，只需要有一個對應的 xxxChange 的 @Output，即可使用 [(xxx)] 的方式，來完成双向绑定 -->
 <app-template [(name)]="name"></app-template>
-Result: {{ name }}
+
+<app-floating-window></app-floating-window>
+
+<button  nz-button  nzType="primary"  >Hover me</button>
+
+<div   nz-popover nzPopoverTrigger="click" #popover nzType="primary" [nzPopoverVisible]="nzPopoverVisible" nzPopoverTitle="Title" nzPopoverContent="Content" (click)="nzPopoverVisible = true">Hover me</div>

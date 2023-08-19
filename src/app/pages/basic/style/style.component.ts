@@ -1,5 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import moment from 'moment';
+import { InjectionToken_Service,InjectionTokenService } from 'src/service/token/tokenService';
+import { Inject ,Injector} from '@angular/core';
+
 @Component({
     selector: 'app-style',
     templateUrl: './style.component.html',
@@ -14,16 +17,18 @@ export class StyleComponent implements OnInit, OnDestroy {
     thirdclass: string = 'thirdclass';
     myStyle: any;
     list = [1, 2, 3, 4];
-    constructor() {}
+    constructor(@Inject(InjectionToken_Service) private myService: InjectionTokenService,private injector: Injector) {}
 
     ngOnInit() {
+      console.log(this.myService,this.injector.get(InjectionToken_Service))
+
         this.myStyle = {
             backgroundColor: 'red'
         };
         const data = Array(4).fill('4').map(()=> 1)
         this.list.push(...[1,67])
         console.log(this.list,data);
-        
+
     }
     ngAfterViewInit() {
         this.timeID = setInterval(() => {

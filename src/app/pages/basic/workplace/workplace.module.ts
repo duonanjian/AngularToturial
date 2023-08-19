@@ -5,10 +5,11 @@ import { NgZorroAntdModule } from '../../../../ant-design-source/ng-zorro-antd.m
 import { WorkplaceComponent } from './workplace.component';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { GetIDService } from 'src/service/getID/getID.service';
+import { NzPopoverModule } from 'src/app/components/custom-popover/custom-popover.module';
 @NgModule({
-  imports: [CommonModule, NgZorroAntdModule, ComponentsModule],
-  declarations: [WorkplaceComponent],
-  exports: [WorkplaceComponent],
-  providers:[GetIDService]
+    imports: [CommonModule, NgZorroAntdModule, ComponentsModule, NzPopoverModule],
+    declarations: [WorkplaceComponent],
+    exports: [WorkplaceComponent],
+    providers: [GetIDService]
 })
 export class WorkplaceModule {}
