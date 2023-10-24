@@ -114,7 +114,7 @@ export abstract class NzTooltipBaseDirective implements OnChanges, OnDestroy, Af
   protected readonly destroy$ = new Subject<void>();
   protected readonly triggerDisposables: Array<() => void> = [];
 
-  private delayTimer?: number;
+  private delayTimer?: any;
 
   constructor(
     public elementRef: ElementRef,
